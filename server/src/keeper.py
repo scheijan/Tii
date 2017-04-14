@@ -1,4 +1,4 @@
-from fluxx import Card
+from tii import Card
 
 
 class Keeper(Card):
@@ -45,6 +45,6 @@ class Creeper4(Creeper):
 
 
 def allKeepers():
-    result = [Creeper1(), Creeper2(), Creeper3(), Creeper4()] 
+    result = [Creeper1(), Creeper2(), Creeper3(), Creeper4()]
     result += [Keeper('Keeper %s' % i) for i in range(0, 23)]
     return result

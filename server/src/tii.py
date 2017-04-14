@@ -152,7 +152,7 @@ class Player(object):
             sys.exit()
 
         else:
-            if self.number == self.game.numberOfPlayers -1:
+            if self.number == self.game.numberOfPlayers - 1:
                 self.game.round += 1
 
 
@@ -200,8 +200,6 @@ class Stack(object):
 
     def getLimit(self):
         return self._limit
-
-
 
 
 if __name__ == '__main__':

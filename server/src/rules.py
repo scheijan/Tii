@@ -1,4 +1,5 @@
-from fluxx import *
+from tii import *
+
 
 class Rule(Card):
     """docstring for Rule"""
@@ -130,6 +131,7 @@ class Draw5(Rule):
     def play(self, game, playerNumber):
         super(Draw5, self).play(game, playerNumber)
         game.cardsToDraw = 5
+
 
 def allRules():
     return [HandLimit1(), HandLimit2(), HandLimit3(), HandLimit4(), KeeperLimit4(), Play2(), Play3(), Play4(), Draw2(), Draw3(), Draw4(), Draw5()]

@@ -1,4 +1,4 @@
-from fluxx import *
+from tii import *
 
 
 class Goal(Card):
