@@ -9,25 +9,24 @@ import tii
 class TiiServer(object):
     @cherrypy.expose
     def index(self):
-        return """<html>
-         <head profile="http://www.w3.org/2005/10/profile">
-         <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
-          <body>
-            <p>Hello World!</p>
-          </body>
-        </html>"""
+        return open('../static/html/index.html').read()
 
     @cherrypy.expose
-    def game(self, p=2):
+    def game(self, p=2, r=20):
+        p = int(p)
+        r = int(r)
         g = tii.Game(p)
 
-        for p in [p for p in g.players if not g.won]:
-            for i in [i for i in range(0, 20) if not g.won]:
+        for p in [x for x in g.players if not g.won]:
+            for i in [i for i in range(0, r) if not g.won]:
                 won = p.turn()
                 if won:
                     break
+        result = '<p>'
+        result += '<br/>'.join(g.gameState().split('\n'))
+        result += '</p>'
 
-        return g.gameState()
+        return result
 
 
 if __name__ == '__main__':
