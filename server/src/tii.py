@@ -25,6 +25,8 @@ class Game(object):
         self.cardsToDraw = 1
         self.cardsToPlay = 1
         self.round = 0
+        self.won = False
+        self.winner = None
 
         self.rules = []
 
@@ -72,25 +74,32 @@ class Game(object):
         self.discard = Stack()
         self.stack.shuffle()
 
-    def printGameState(self):
+    def gameState(self):
         """print the current state of the game, for debugging purposes"""
-        print(50 * ' *')
-        print('game state')
-        print(50 * ' *')
-        print('players: ')
+        result = 50 * ' *'
+        result += '\ngame state\n'
+        result += 50 * ' *'
+        result += '\nplayers: \n'
         for player in self.players:
-            print(player)
+            result += str(player)
+            result += '\n'
 
-        print('round: %s' % self.round)
-        print('current goal: %s' % self.goal)
-        print('number of cards on the main stack: %s' % len(self.stack))
-        print('number of cards on the discard stack: %s' % len(self.discard))
-        print('number of rules: %s' % len(self.rules))
-        print('cards to draw per round: %s' % self.cardsToDraw)
-        print('cards to play per round: %s' % self.cardsToPlay)
-        print('hand limit: %s' % self.handLimit)
-        print('keeper limit: %s' % self.keeperLimit)
-        print(50 * ' *')
+        result += 'round: %s\n' % self.round
+        result += 'current goal: %s\n' % self.goal
+        result += 'number of cards on the main stack: %s\n' % len(self.stack)
+        result += 'number of cards on the discard stack: %s\n' % len(self.discard)
+        result += 'number of rules: %s\n' % len(self.rules)
+        result += 'cards to draw per round: %s\n' % self.cardsToDraw
+        result += 'cards to play per round: %s\n' % self.cardsToPlay
+        result += 'hand limit: %s\n' % self.handLimit
+        result += 'keeper limit: %s\n' % self.keeperLimit
+        if self.won:
+            result += 50 * ' *'
+            result += '\n'
+            result += '%s won the game!!\n' % self.winner
+
+        result += 50 * ' *'
+        return result
 
 
 class Player(object):
@@ -148,7 +157,7 @@ class Player(object):
         self.draw(self.game.cardsToDraw)
         for i in range(0, self.game.cardsToPlay):
             self.play(0)
-        self.endTurn()
+        return self.endTurn()
 
     def endTurn(self):
         """ends a turn and checks for win conditions, increases the turn counter"""
@@ -161,16 +170,14 @@ class Player(object):
                     won = False
 
         if won:
-            print(self.game.printGameState())
-            print(50 * ' *')
-            print('Player %s won!!!' % self.number)
-            print(50 * ' *')
-
-            sys.exit()
+            self.game.won = True
+            self.game.winner = self
+            print(self.game.gameState())
 
         else:
             if self.number == self.game.numberOfPlayers - 1:
                 self.game.round += 1
+        return won
 
 
 class Stack(object):
@@ -232,8 +239,8 @@ if __name__ == '__main__':
     p1 = game.players[0]
     p2 = game.players[1]
 
-    game.printGameState()
+    print(game.gameState())
     for i in range(0, 10):
         p1.turn()
         p2.turn()
-    game.printGameState()
+    print(game.gameState())
