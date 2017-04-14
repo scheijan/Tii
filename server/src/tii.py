@@ -10,6 +10,7 @@ from rules import *
 
 class Game(object):
     """main game object for Tii"""
+
     def __init__(self, numberOfPlayers=2):
         super(Game, self).__init__()
         self.stack = Stack()
@@ -94,6 +95,7 @@ class Game(object):
 
 class Player(object):
     """base class for a player with name, number and empty stacks for their hand and deck"""
+
     def __init__(self, number, game):
         super(Player, self).__init__()
         self.number = number
@@ -173,6 +175,7 @@ class Player(object):
 
 class Stack(object):
     """base class for a stack of cards"""
+
     def __init__(self):
         super(Stack, self).__init__()
         self._cards = []
