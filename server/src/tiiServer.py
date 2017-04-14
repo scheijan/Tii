@@ -5,6 +5,16 @@ import cherrypy
 
 import tii
 
+HTML = '''<html>
+  <head profile="http://www.w3.org/2005/10/profile">
+     <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
+     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+  </head>
+  <body>
+    :content
+  </body>
+</html>'''
+
 
 class TiiServer(object):
     @cherrypy.expose
@@ -26,7 +36,7 @@ class TiiServer(object):
         result += '<br/>'.join(g.gameState().split('\n'))
         result += '</p>'
 
-        return result
+        return HTML.replace(':content', result)
 
 
 if __name__ == '__main__':
