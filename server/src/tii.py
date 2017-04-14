@@ -9,7 +9,7 @@ from rules import *
 
 
 class Game(object):
-    """docstring for Game"""
+    """main game object for Tii"""
     def __init__(self, numberOfPlayers=2):
         super(Game, self).__init__()
         self.stack = Stack()
@@ -33,22 +33,29 @@ class Game(object):
             player.draw(3)
 
     def drawFromStack(self, count=1):
+        """draw a card from the stack and return it, restock if necessary"""
         if len(self.stack) < count:
             self.restock()
         return self.stack.draw(count)
 
     def discard(self, card):
+        """discard a single card and add it to the discard stack"""
         self.discard.add(card)
 
     def setGoal(self, goal):
+        """set the game's goal to the passed goal card"""
+        # check win conditions here?
         print('new goal: %s' % goal)
         self.goal = goal
 
     def addRule(self, rule):
+        """add the passed rule card to the list of current rules"""
+        # remove obsolete rules and discard them
         print('new rule: %s' % rule)
         self.rules.append(rule)
 
     def initStack(self):
+        """initialize a standard deck of cards and shuffle them"""
         allCards = []
         allCards += allGoals()
         allCards += allRules()
@@ -59,11 +66,13 @@ class Game(object):
         self.stack.shuffle()
 
     def restock(self):
+        """use the discard stack and possible leftover cards from the stack and reshuffle"""
         self.stack.add(self.discard._cards)
         self.discard = Stack()
         self.stack.shuffle()
 
     def printGameState(self):
+        """print the current state of the game, for debugging purposes"""
         print(50 * ' *')
         print('game state')
         print(50 * ' *')
@@ -84,7 +93,7 @@ class Game(object):
 
 
 class Player(object):
-    """docstring for Player"""
+    """base class for a player with name, number and empty stacks for their hand and deck"""
     def __init__(self, number, game):
         super(Player, self).__init__()
         self.number = number
@@ -99,11 +108,13 @@ class Player(object):
         return '%s: %s / %s' % (self.name, self.hand, self.deck)
 
     def play(self, card):
+        """remove the passed card from the player's hand and play it"""
         if len(self.hand) > 0:
             c = self.hand.remove(card)
             c.play(self.game, self.number)
 
     def draw(self, count=1):
+        """draw a card from the stack, repeat until it's not a creeper"""
         drawn = self.game.drawFromStack(count)
         for c in drawn:
             if c.category == 'creeper':
@@ -115,6 +126,7 @@ class Player(object):
         self.hand.add(drawn)
 
     def hasCreeper(self):
+        """check player's deck for creepers"""
         result = False
         for c in self.deck:
             if c.category == 'creeper':
@@ -122,6 +134,7 @@ class Player(object):
         return result
 
     def hasKeeper(self, name):
+        """check whether the player has a certain keeper/creeper"""
         result = False
         for c in self.deck:
             if c.name == name:
@@ -129,12 +142,14 @@ class Player(object):
         return result
 
     def turn(self):
+        """simulate a player's turn: draw cards and play the first card on hand"""
         self.draw(self.game.cardsToDraw)
         for i in range(0, self.game.cardsToPlay):
             self.play(0)
         self.endTurn()
 
     def endTurn(self):
+        """ends a turn and checks for win conditions, increases the turn counter"""
         won = True
         if not self.game.goal or self.hasCreeper():
             won = False
@@ -157,7 +172,7 @@ class Player(object):
 
 
 class Stack(object):
-    """docstring for Stack"""
+    """base class for a stack of cards"""
     def __init__(self):
         super(Stack, self).__init__()
         self._cards = []
@@ -173,9 +188,11 @@ class Stack(object):
         return iter(self._cards)
 
     def shuffle(self):
+        """shuffle the deck of cards"""
         random.shuffle(self._cards)
 
     def draw(self, count=1):
+        """draw a card from the deck if possible"""
         if len(self._cards) == 0:
             return []
         elif len(self._cards) < count:
@@ -185,20 +202,24 @@ class Stack(object):
         return drawn
 
     def add(self, cards):
+        """add one or more cards to the stack"""
         if isinstance(cards, list):
             self._cards += cards
         else:
             self._cards.append(cards)
 
     def remove(self, card):
+        """remove a card from the deck"""
         result = self._cards[card]
         del self._cards[card]
         return result
 
     def setLimit(self, limit):
+        """set the limit of the stack"""
         self._limit = limit
 
     def getLimit(self):
+        """get the limit of the stack"""
         return self._limit
 
 

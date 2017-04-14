@@ -2,19 +2,20 @@ from tii import *
 
 
 class Rule(Card):
-    """docstring for Rule"""
+    """base class for rules, implements a generic version of the 'play' method"""
     def __init__(self, name):
         super(Rule, self).__init__(name)
         self.category = 'rule'
         self.name = name
 
     def play(self, game, playerNumber):
+        """calls the generic 'play' method of Card and adds the rule to the game"""
         super(Rule, self).play(game, playerNumber)
         game.addRule(self)
 
 
 class HandLimit1(Rule):
-    """docstring for HandLimit1"""
+    """rule, sets the hand limit to 1 when played"""
     def __init__(self):
         super(HandLimit1, self).__init__('Hand Limit 1')
 
@@ -24,7 +25,7 @@ class HandLimit1(Rule):
 
 
 class HandLimit2(Rule):
-    """docstring for HandLimit2"""
+    """rule, sets the hand limit to 2 when played"""
     def __init__(self):
         super(HandLimit2, self).__init__('Hand Limit 2')
 
@@ -34,7 +35,7 @@ class HandLimit2(Rule):
 
 
 class HandLimit3(Rule):
-    """docstring for HandLimit3"""
+    """rule, sets the hand limit to 3 when played"""
     def __init__(self):
         super(HandLimit3, self).__init__('Hand Limit 3')
 
@@ -44,7 +45,7 @@ class HandLimit3(Rule):
 
 
 class HandLimit4(Rule):
-    """docstring for HandLimit4"""
+    """rule, sets the hand limit to 4 when played"""
     def __init__(self):
         super(HandLimit4, self).__init__('Hand Limit 4')
 
@@ -54,7 +55,7 @@ class HandLimit4(Rule):
 
 
 class KeeperLimit4(Rule):
-    """docstring for KeeperLimit4"""
+    """rule, sets the keeper limit to 4 when played"""
     def __init__(self):
         super(KeeperLimit4, self).__init__('Keeper Limit 4')
 
@@ -64,7 +65,7 @@ class KeeperLimit4(Rule):
 
 
 class Play2(Rule):
-    """docstring for Play2"""
+    """rule, sets 'play cards per round' to 2 when played"""
     def __init__(self):
         super(Play2, self).__init__('Play 2')
 
@@ -74,7 +75,7 @@ class Play2(Rule):
 
 
 class Play3(Rule):
-    """docstring for Play3"""
+    """rule, sets 'play cards per round' to 3 when played"""
     def __init__(self):
         super(Play3, self).__init__('Play 3')
 
@@ -84,7 +85,7 @@ class Play3(Rule):
 
 
 class Play4(Rule):
-    """docstring for Play4"""
+    """rule, sets 'play cards per round' to 4 when played"""
     def __init__(self):
         super(Play4, self).__init__('Play 4')
 
@@ -94,7 +95,7 @@ class Play4(Rule):
 
 
 class Draw2(Rule):
-    """docstring for Draw2"""
+    """rule, sets 'draw cards per round' to 2 when played"""
     def __init__(self):
         super(Draw2, self).__init__('Draw 2')
 
@@ -104,7 +105,7 @@ class Draw2(Rule):
 
 
 class Draw3(Rule):
-    """docstring for Draw3"""
+    """rule, sets 'draw cards per round' to 3 when played"""
     def __init__(self):
         super(Draw3, self).__init__('Draw 3')
 
@@ -114,7 +115,7 @@ class Draw3(Rule):
 
 
 class Draw4(Rule):
-    """docstring for Draw4"""
+    """rule, sets 'draw cards per round' to 4 when played"""
     def __init__(self):
         super(Draw4, self).__init__('Draw 4')
 
@@ -124,7 +125,7 @@ class Draw4(Rule):
 
 
 class Draw5(Rule):
-    """docstring for Draw5"""
+    """rule, sets 'draw cards per round' to 5 when played"""
     def __init__(self):
         super(Draw5, self).__init__('Draw 5')
 

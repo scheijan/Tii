@@ -1,5 +1,5 @@
 class Card(object):
-    """docstring for Card"""
+    """abstract base class for a single card"""
     def __init__(self, name):
         super(Card, self).__init__()
         self.name = name

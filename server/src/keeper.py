@@ -2,19 +2,21 @@ from tii import Card
 
 
 class Keeper(Card):
-    """docstring for Keeper"""
+    """base class for keepers, implements a generic version of the 'play' method"""
     def __init__(self, name):
         super(Keeper, self).__init__(name)
         self.category = 'keeper'
 
     def play(self, game, playerNumber):
+        """add the keeper to the player's deck"""
+        # needs check for keeper limit?
         super(Keeper, self).play(game, playerNumber)
         p = game.players[playerNumber]
         p.deck.add(self)
 
 
 class Creeper(Keeper):
-    """docstring for Creeper"""
+    """base class for creepers"""
     def __init__(self, name):
         super(Creeper, self).__init__(name)
         self.category = 'creeper'

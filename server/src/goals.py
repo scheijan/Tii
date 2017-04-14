@@ -2,7 +2,7 @@ from tii import *
 
 
 class Goal(Card):
-    """docstring for Goal"""
+    """base class for goals, implements a generic version of the 'play' method"""
     def __init__(self, name):
         super(Goal, self).__init__(name)
         self.category = 'goal'
@@ -13,6 +13,7 @@ class Goal(Card):
         return '%s (%s) - %s' % (self.name, self.category, self.conditions)
 
     def play(self, game, playerNumber):
+        """calls the generic 'play' method of Card and adds the goal to the game"""
         super(Goal, self).play(game, playerNumber)
         game.setGoal(self)
 
@@ -20,6 +21,7 @@ class Goal(Card):
         pass
 
 
+# dummy classes for goals
 class Goal1(Goal):
     """docstring for Goal1"""
     def __init__(self):
