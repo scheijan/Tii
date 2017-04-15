@@ -3,23 +3,19 @@ import os.path
 
 import cherrypy
 
-import tii
+from jinja2 import Environment, FileSystemLoader
 
-HTML = '''<html>
-  <head profile="http://www.w3.org/2005/10/profile">
-     <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
-     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
-  </head>
-  <body>
-    :content
-  </body>
-</html>'''
+import tii
 
 
 class TiiServer(object):
+    def __init__(self):
+        self.jinjaEnv = Environment(loader=FileSystemLoader('../static/html'))
+
     @cherrypy.expose
     def index(self):
-        return open('../static/html/index.html').read()
+        template = self.jinjaEnv.get_template('index.html')
+        return template.render()
 
     @cherrypy.expose
     def game(self, p=2, r=20):
@@ -32,11 +28,13 @@ class TiiServer(object):
                 won = p.turn()
                 if won:
                     break
+
         result = '<p>'
         result += '<br/>'.join(g.gameState().split('\n'))
         result += '</p>'
 
-        return HTML.replace(':content', result)
+        template = self.jinjaEnv.get_template('index.html')
+        return template.render(content=result)
 
 
 if __name__ == '__main__':
