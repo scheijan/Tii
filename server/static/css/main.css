@@ -9,4 +9,46 @@ body {
 .card {
   border: 1px solid silver;
   box-shadow: 5px 5px 2px #888888;
+  width: 160px;
+  height: 218px;
+}
+
+.smallcard {
+  border: 1px solid silver;
+  box-shadow: 5px 5px 2px #888888;
+  width: 160px;
+  height: 218px;
+  background-color: white;
+  vertical-align: middle;
+  position: relative;
+}
+
+.smallimg {  
+  max-height: 100%;  
+  max-width: 100%; 
+  width: 140px;
+  height: auto;
+  position: absolute;  
+  top: 0;  
+  bottom: 0;  
+  left: 0;  
+  right: 0;  
+  margin: auto;
+}
+
+.card:hover, .smallcard:hover {
+  cursor: move;
+}
+
+.stack {
+  width: 160px;
+  height: 218px;
+  margin: 3px;
+}
+
+.outerStack {
+  border: 1px solid silver;
+  width: 166px;
+  height: 224px;
+  background-color: DarkGrey;
 }

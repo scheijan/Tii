@@ -18,6 +18,11 @@ class TiiServer(object):
         return template.render()
 
     @cherrypy.expose
+    def cards(self):
+        template = self.jinjaEnv.get_template('cards.html')
+        return template.render()
+
+    @cherrypy.expose
     def game(self, p=2, r=20):
         p = int(p)
         r = int(r)
@@ -29,9 +34,9 @@ class TiiServer(object):
                 if won:
                     break
 
-        result = '<p>'
+        result = '<div class="center"><br/>'
         result += '<br/>'.join(g.gameState().split('\n'))
-        result += '</p>'
+        result += '</div>'
 
         template = self.jinjaEnv.get_template('index.html')
         return template.render(content=result)

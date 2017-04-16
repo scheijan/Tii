@@ -1,0 +1,61 @@
+<html>
+  <head profile="http://www.w3.org/2005/10/profile">
+     <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
+     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script> 
+     <script type="text/javascript">
+        $( init );
+ 
+        function init() {
+          $('.draggable').draggable(
+          {
+              // containment: '#content',
+              cursor: 'move',
+              stack: '.draggable',
+              revert: true
+            }
+          );
+
+          $('#stack').droppable( {
+              hoverClass: 'hovered',
+              drop: handleDropEvent,
+              accept: '.draggable',
+          } );
+        }
+
+        function handleDropEvent( event, ui ) {
+          var draggable = ui.draggable;
+          draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
+          draggable.draggable( 'option', 'revert', false );
+          console.log( 'the card with ID "' + draggable.attr('id') + '" was dropped onto me!' );
+        }
+        
+     </script>
+  </head>
+  <body>
+    <div>
+      
+     
+      <table>
+        <tr>
+          <td colspan="5" align="center"><div class="draggable"><img class="card" src="/static/pics/card.png" id="card"/></div></td>
+          <td colspan="5" align="center"><div class="outerStack"><div id="stack" class="stack"></div></div></td>
+        </tr>
+      {% for i in range(0,6) %}
+        <tr>
+        {% for j in range(1,11) %}
+        <td>
+          <div class="smallcard draggable" id="K{{i * 10 + j}}"><img class="smallimg" src="/static/pics/cards/keepers/K{{i * 10 + j}}.png" /></div>
+        </td>
+        {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+      
+      
+    </div>
+    
+    {{ content }}
+  </body>
+</html>
