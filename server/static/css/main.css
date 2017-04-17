@@ -48,7 +48,7 @@ body {
   height: 196px;
   background-color: DarkGrey;
   margin: 5px;
-  
+
 }
 
 .label {
@@ -90,15 +90,12 @@ body {
 
 #stack {
   float: left;
-  margin-left:15%;
 }
 
 #goal {
   float: left;
-  margin-left:20%;
 }
 
 #discard {
   float: left;
-  margin-left:25%;
 }
