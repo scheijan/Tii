@@ -10,8 +10,8 @@ class Goal(Card):
         self.description = 'a goal'
         self.conditions = []
 
-    def __repr__(self):
-        return '%s (%s) - %s' % (self.name, self.category, self.conditions)
+    # def __repr__(self):
+    #     return '%s (%s) - %s' % (self.name, self.category, self.conditions)
 
     def play(self, game, playerNumber):
         """calls the generic 'play' method of Card and adds the goal to the game"""

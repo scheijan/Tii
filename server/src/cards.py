@@ -7,7 +7,7 @@ class Card(object):
         self.category = 'card'
 
     def __repr__(self):
-        return '%s (%s)' % (self.name, self.category)
+        return str(self.name)
 
     def play(self, game, playerNumber):
         print('Player %s plays card: %s' % (playerNumber, self))
