@@ -1,23 +1,19 @@
 body {
-  background-color: WhiteSmoke;
-}
-
-.center {
-  text-align: center;
+  background-color: Grey;
 }
 
 .card {
   border: 1px solid silver;
-  box-shadow: 5px 5px 2px #888888;
-  width: 160px;
-  height: 218px;
+  box-shadow: 4px 4px 2px #888888;
+  width: 120px;
+  height: 164px;
 }
 
 .smallcard {
   border: 1px solid silver;
-  box-shadow: 5px 5px 2px #888888;
-  width: 160px;
-  height: 218px;
+  box-shadow: 4px 4px 2px #888888;
+  width: 120px;
+  height: 164px;
   background-color: white;
   vertical-align: middle;
   position: relative;
@@ -26,7 +22,7 @@ body {
 .smallimg {  
   max-height: 100%;  
   max-width: 100%; 
-  width: 140px;
+  width: 100px;
   height: auto;
   position: absolute;  
   top: 0;  
@@ -41,14 +37,68 @@ body {
 }
 
 .stack {
-  width: 160px;
-  height: 218px;
+  width: 120px;
+  height: 164px;
   margin: 3px;
 }
 
 .outerStack {
   border: 1px solid silver;
-  width: 166px;
-  height: 224px;
+  width: 130px;
+  height: 196px;
   background-color: DarkGrey;
+  margin: 5px;
+  
+}
+
+.label {
+  padding: 3px;
+  margin-bottom: 3px;
+  background-color: silver;
+}
+
+#board {
+  margin: 23px;
+  background-color: WhiteSmoke;
+  padding-top: 5px;
+}
+
+#rules {
+  margin: 10px;
+  border: 1px solid DarkGrey;
+  height: 200px;
+}
+
+#stacks {
+  margin: 10px;
+  border: 1px solid DarkGrey;
+  height: 200px;
+  text-align: center;
+}
+
+#deck {
+  margin: 10px;
+  border: 1px solid DarkGrey;
+  height: 200px;
+}
+
+#hand {
+  margin: 10px;
+  border: 1px solid DarkGrey;
+  height: 200px;
+}
+
+#stack {
+  float: left;
+  margin-left:15%;
+}
+
+#goal {
+  float: left;
+  margin-left:20%;
+}
+
+#discard {
+  float: left;
+  margin-left:25%;
 }
