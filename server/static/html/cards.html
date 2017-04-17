@@ -10,8 +10,22 @@
     <div>
       <table>
         <tr>
-          <td colspan="5" align="center"><div class="draggable"><img class="card" src="/static/pics/card.png" id="card"/></div></td>
-          <td colspan="5" align="center"><div class="outerStack"><div id="stack" class="stack droppable"></div></div></td>
+          <td colspan="5" align="center">
+            <div id="stack">
+              <div class="outerStack">
+                <span class="label">Stack</span>
+                <div id="stack" class="stack droppable">
+                  <img class="card draggable" src="/static/pics/card.png" id="card"/>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td colspan="5" align="center">
+            <div class="outerStack">
+              <span class="label">Discard</span>
+              <div id="stack" class="stack droppable"></div>
+            </div>
+          </td>
         </tr>
         {% for i in range(0,6) %}
           <tr>
