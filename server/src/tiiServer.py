@@ -11,6 +11,7 @@ import tii
 class TiiServer(object):
     def __init__(self):
         self.jinjaEnv = Environment(loader=FileSystemLoader('../static/html'))
+        self.game = tii.Game(2)
 
     @cherrypy.expose
     def index(self):
@@ -23,23 +24,31 @@ class TiiServer(object):
         return template.render()
 
     @cherrypy.expose
-    def game(self, p=2, r=20):
+    def board(self):
+        template = self.jinjaEnv.get_template('board.html')
+        return template.render()
+
+    @cherrypy.expose
+    def play(self, p=2, r=20):
         p = int(p)
         r = int(r)
-        g = tii.Game(p)
 
-        for p in [x for x in g.players if not g.won]:
-            for i in [i for i in range(0, r) if not g.won]:
+        for p in [x for x in self.game.players if not self.game.won]:
+            for i in [i for i in range(0, r) if not self.game.won]:
                 won = p.turn()
                 if won:
                     break
 
         result = '<div class="center"><br/>'
-        result += '<br/>'.join(g.gameState().split('\n'))
+        result += '<br/>'.join(self.game.gameState().split('\n'))
         result += '</div>'
 
         template = self.jinjaEnv.get_template('index.html')
         return template.render(content=result)
+
+    @cherrypy.expose
+    def state(self, n=1):
+        return self.game.playerState(int(n))
 
 
 if __name__ == '__main__':
