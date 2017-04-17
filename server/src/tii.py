@@ -1,5 +1,8 @@
 import random
 import sys
+from copy import deepcopy
+
+import jsonpickle
 
 from cards import Card
 
@@ -101,6 +104,20 @@ class Game(object):
         result += 50 * ' *'
         return result
 
+    def playerState(self, playerNr):
+        c = deepcopy(self)
+        c.players = None
+        c.stack = None
+        p = self.players[playerNr]
+        c.hand = p.hand
+        c.deck = p.deck
+        c.name = p.name
+        c.players = []
+        for p in [player for player in self.players if player.number != playerNr]:
+            c.players.append({'name': p.name, 'deck': p.deck, 'number': p.number})
+
+        return jsonpickle.encode(c, unpicklable=False)
+
 
 class Player(object):
     """base class for a player with name, number and empty stacks for their hand and deck"""
@@ -192,7 +209,8 @@ class Stack(object):
         return len(self._cards)
 
     def __repr__(self):
-        return '%s (limit %s)' % (self._cards, self._limit)
+        # return '%s (limit %s)' % (self._cards, self._limit)
+        return str([str(foo) for foo in self._cards])
 
     def __iter__(self):
         return iter(self._cards)
