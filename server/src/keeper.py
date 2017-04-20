@@ -3,9 +3,10 @@ from tii import Card
 
 class Keeper(Card):
     """base class for keepers, implements a generic version of the 'play' method"""
-    def __init__(self, name):
+    def __init__(self, name, id):
         super(Keeper, self).__init__(name)
         self.category = 'keeper'
+        self.id = id
 
     def play(self, game, playerNumber):
         """add the keeper to the player's deck"""
@@ -17,36 +18,36 @@ class Keeper(Card):
 
 class Creeper(Keeper):
     """base class for creepers"""
-    def __init__(self, name):
-        super(Creeper, self).__init__(name)
+    def __init__(self, name, id):
+        super(Creeper, self).__init__(name, id)
         self.category = 'creeper'
 
 
 class Creeper1(Creeper):
     """docstring for Creeper1"""
-    def __init__(self):
-        super(Creeper1, self).__init__('Creeper 1')
+    def __init__(self, id):
+        super(Creeper1, self).__init__('Creeper 1', id)
 
 
 class Creeper2(Creeper):
     """docstring for Creeper2"""
-    def __init__(self):
-        super(Creeper2, self).__init__('Creeper 2')
+    def __init__(self, id):
+        super(Creeper2, self).__init__('Creeper 2', id)
 
 
 class Creeper3(Creeper):
     """docstring for Creeper3"""
-    def __init__(self):
-        super(Creeper3, self).__init__('Creeper 3')
+    def __init__(self, id):
+        super(Creeper3, self).__init__('Creeper 3', id)
 
 
 class Creeper4(Creeper):
     """docstring for Creeper4"""
-    def __init__(self):
-        super(Creeper4, self).__init__('Creeper 4')
+    def __init__(self, id):
+        super(Creeper4, self).__init__('Creeper 4', id)
 
 
 def allKeepers():
-    result = [Creeper1(), Creeper2(), Creeper3(), Creeper4()]
-    result += [Keeper('Keeper %s' % i) for i in range(0, 23)]
+    result = [Creeper1('C1'), Creeper2('C2'), Creeper3('C3'), Creeper4('C4')]
+    result += [Keeper('Keeper %s' % i, 'K%s' % i) for i in range(0, 23)]
     return result

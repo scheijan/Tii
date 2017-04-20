@@ -8,6 +8,7 @@ class Goal(Card):
         super(Goal, self).__init__(name)
         self.category = 'goal'
         self.description = 'a goal'
+        self.id = 'an id'
         self.conditions = []
 
     # def __repr__(self):
@@ -30,6 +31,7 @@ class Goal1(Goal):
         super(Goal1, self).__init__('Goal 1')
         self.description = 'To win you need Keeper 1 and Keeper 2.'
         self.conditions = ['Keeper 1', 'Keeper 2']
+        self.id = 'G1'
 
 
 class Goal2(Goal):
@@ -39,6 +41,7 @@ class Goal2(Goal):
         super(Goal2, self).__init__('Goal 2')
         self.description = 'To win you need Keeper 3 and Keeper 4.'
         self.conditions = ['Keeper 3', 'Keeper 4']
+        self.id = 'G2'
 
 
 class Goal3(Goal):
@@ -48,6 +51,7 @@ class Goal3(Goal):
         super(Goal3, self).__init__('Goal 3')
         self.description = 'To win you need Keeper 5 and Keeper 6.'
         self.conditions = ['Keeper 5', 'Keeper 6']
+        self.id = 'G3'
 
 
 class Goal4(Goal):
@@ -57,6 +61,7 @@ class Goal4(Goal):
         super(Goal4, self).__init__('Goal 4')
         self.description = 'To win you need Keeper 7 and Keeper 8.'
         self.conditions = ['Keeper 7', 'Keeper 8']
+        self.id = 'G4'
 
 
 class Goal5(Goal):
@@ -66,6 +71,7 @@ class Goal5(Goal):
         super(Goal5, self).__init__('Goal 5')
         self.description = 'To win you need Keeper 9 and Keeper 10.'
         self.conditions = ['Keeper 9', 'Keeper 10']
+        self.id = 'G5'
 
 
 def allGoals():

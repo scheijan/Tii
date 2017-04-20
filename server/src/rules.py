@@ -24,6 +24,7 @@ class HandLimit1(Rule):
     def play(self, game, playerNumber):
         super(HandLimit1, self).play(game, playerNumber)
         game.handLimit = 1
+        self.id = 'R1'
 
 
 class HandLimit2(Rule):
@@ -35,6 +36,7 @@ class HandLimit2(Rule):
     def play(self, game, playerNumber):
         super(HandLimit2, self).play(game, playerNumber)
         game.handLimit = 2
+        self.id = 'R2'
 
 
 class HandLimit3(Rule):
@@ -46,6 +48,7 @@ class HandLimit3(Rule):
     def play(self, game, playerNumber):
         super(HandLimit3, self).play(game, playerNumber)
         game.handLimit = 3
+        self.id = 'R3'
 
 
 class HandLimit4(Rule):
@@ -57,6 +60,7 @@ class HandLimit4(Rule):
     def play(self, game, playerNumber):
         super(HandLimit4, self).play(game, playerNumber)
         game.handLimit = 4
+        self.id = 'R4'
 
 
 class KeeperLimit4(Rule):
@@ -68,6 +72,7 @@ class KeeperLimit4(Rule):
     def play(self, game, playerNumber):
         super(KeeperLimit4, self).play(game, playerNumber)
         game.keeperLimit = 4
+        self.id = 'R5'
 
 
 class Play2(Rule):
@@ -79,6 +84,7 @@ class Play2(Rule):
     def play(self, game, playerNumber):
         super(Play2, self).play(game, playerNumber)
         game.cardsToPlay = 2
+        self.id = 'R6'
 
 
 class Play3(Rule):
@@ -90,6 +96,7 @@ class Play3(Rule):
     def play(self, game, playerNumber):
         super(Play3, self).play(game, playerNumber)
         game.cardsToPlay = 3
+        self.id = 'R7'
 
 
 class Play4(Rule):
@@ -101,6 +108,7 @@ class Play4(Rule):
     def play(self, game, playerNumber):
         super(Play4, self).play(game, playerNumber)
         game.cardsToPlay = 4
+        self.id = 'R8'
 
 
 class Draw2(Rule):
@@ -112,6 +120,7 @@ class Draw2(Rule):
     def play(self, game, playerNumber):
         super(Draw2, self).play(game, playerNumber)
         game.cardsToDraw = 2
+        self.id = 'R9'
 
 
 class Draw3(Rule):
@@ -123,6 +132,7 @@ class Draw3(Rule):
     def play(self, game, playerNumber):
         super(Draw3, self).play(game, playerNumber)
         game.cardsToDraw = 3
+        self.id = 'R10'
 
 
 class Draw4(Rule):
@@ -134,6 +144,7 @@ class Draw4(Rule):
     def play(self, game, playerNumber):
         super(Draw4, self).play(game, playerNumber)
         game.cardsToDraw = 4
+        self.id = 'R11'
 
 
 class Draw5(Rule):
@@ -145,6 +156,7 @@ class Draw5(Rule):
     def play(self, game, playerNumber):
         super(Draw5, self).play(game, playerNumber)
         game.cardsToDraw = 5
+        self.id = 'R12'
 
 
 def allRules():
