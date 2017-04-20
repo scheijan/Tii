@@ -17,6 +17,8 @@ body {
   background-color: white;
   vertical-align: middle;
   position: relative;
+  display: inline-block;
+  margin: 3px;
 }
 
 .smallimg {  
@@ -48,7 +50,6 @@ body {
   height: 196px;
   background-color: DarkGrey;
   margin: 5px;
-
 }
 
 .label {
@@ -66,26 +67,26 @@ body {
 #rules {
   margin: 10px;
   border: 1px solid DarkGrey;
-  height: 200px;
+  min-height: 190px;
 }
 
 #stacks {
   margin: 10px;
   border: 1px solid DarkGrey;
-  height: 200px;
+  height: 215px;
   text-align: center;
 }
 
 #deck {
   margin: 10px;
   border: 1px solid DarkGrey;
-  height: 200px;
+  min-height: 190px;
 }
 
 #hand {
   margin: 10px;
   border: 1px solid DarkGrey;
-  height: 200px;
+  min-height: 190px;
 }
 
 #stack {
