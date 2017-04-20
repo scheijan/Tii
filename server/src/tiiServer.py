@@ -24,12 +24,12 @@ class TiiServer(object):
         return template.render()
 
     @cherrypy.expose
-    def board(self):
+    def board(self, n=1):
         template = self.jinjaEnv.get_template('board.html')
-        return template.render()
+        return template.render(n=n)
 
     @cherrypy.expose
-    def play(self, p=2, r=20):
+    def play(self, p=2, r=10):
         p = int(p)
         r = int(r)
         self.game = tii.Game(p)
