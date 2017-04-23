@@ -24,7 +24,7 @@ class TiiServer(object):
         return template.render()
 
     @cherrypy.expose
-    def board(self, n=1):
+    def board(self, n=0):
         template = self.jinjaEnv.get_template('board.html')
         return template.render(n=n)
 
