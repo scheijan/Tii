@@ -220,6 +220,32 @@ class ZilleSymbol(Goal):
         self.conditions = []
         self.id = 'zille_symbol'
 
+class IlmenskieJones(Goal):
+    """docstring for Ilmenskie Jones"""
+    def __init__(self):
+        super(IlmenskieJones, self).__init__('Ilmenskie Jones')
+        self.description = 'some description here'
+        self.conditions = []
+        self.id = 'ilmenskie-jones'
+
+class GameshowWheel(Goal):
+    """docstring for Ilmenskie Jones"""
+    def __init__(self):
+        super(GameshowWheel, self).__init__('Gameshow Wheel')
+        self.description = 'some description here'
+        self.conditions = []
+        self.id = 'gameshow-wheel'
+
+class MusicblockGng(Goal):
+    """docstring for Ilmenskie Jones"""
+    def __init__(self):
+        super(MusicblockGng, self).__init__('Musicblock GNG')
+        self.description = 'some description here'
+        self.conditions = []
+        self.id = 'musicblock-gng'
+
+        
+
 
 def allGoals():
     return [Alph(), AlphSymbol(), Cosma(), CosmaSymbol(), Friendly(), FriendlySymbol(), Grendaline(), GrendalineSymbol(), Humbaba(), HumbabaSymbol(), Lem(), LemSymbol(), Mab(), MabSymbol(), Pot(), PotSymbol(), Spriggan(), SprigganSymbol(), Tii(), TiiSymbol(), Zille(), ZilleSymbol()]
