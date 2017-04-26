@@ -47,7 +47,12 @@ class Creeper4(Creeper):
         super(Creeper4, self).__init__('Creeper 4', id)
 
 
+KEEPERS = ['batterfly', 'butterfly', 'chicken', 'crab', 'fox', 'piggy', 'salmon', 'sloth', 'ilmenskie-jones', 'gameshow-wheel', 'fancy-pick', 'construction-tool', 'focusing-orb', 'grand-ol-grinder', 'quill', 'tincturing-kit', 'beer', 'crabato-juice']
+KEEPERS += ['hooch', 'snail', 'string', 'firefly', 'sparkly', 'dark-patch', 'patch', 'paper', 'peat', 'musicblock-gng', 'cocktail-shaker']
+
+
+
 def allKeepers():
     result = [Creeper1('C1'), Creeper2('C2'), Creeper3('C3'), Creeper4('C4')]
-    result += [Keeper('Keeper %s' % i, 'K%s' % i) for i in range(0, 23)]
+    result += [Keeper(k, k) for k in KEEPERS]
     return result

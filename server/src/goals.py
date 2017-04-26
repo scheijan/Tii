@@ -23,56 +23,203 @@ class Goal(Card):
         pass
 
 
-# dummy classes for goals
-class Goal1(Goal):
-    """docstring for Goal1"""
-
+class Alph(Goal):
+    """docstring for Alph"""
     def __init__(self):
-        super(Goal1, self).__init__('Goal 1')
-        self.description = 'To win you need Keeper 1 and Keeper 2.'
-        self.conditions = ['Keeper 1', 'Keeper 2']
-        self.id = 'G1'
+        super(Alph, self).__init__('Alph')
+        self.description = 'Alph is the giant responsible for creating "things". And also "stuff". Approaching everything with the question "What IF?", Alph is never happier than when the answer results in a complex wadjamacallit or a satisfyingly big boom.'
+        self.conditions = []
+        self.id = 'alph'
 
 
-class Goal2(Goal):
-    """docstring for Goal2"""
-
+class AlphSymbol(Goal):
+    """docstring for Alph Symbol"""
     def __init__(self):
-        super(Goal2, self).__init__('Goal 2')
-        self.description = 'To win you need Keeper 3 and Keeper 4.'
-        self.conditions = ['Keeper 3', 'Keeper 4']
-        self.id = 'G2'
+        super(AlphSymbol, self).__init__('Alph Symbol')
+        self.description = 'Alph is the giant responsible for creating "things". And also "stuff". Approaching everything with the question "What IF?", Alph is never happier than when the answer results in a complex wadjamacallit or a satisfyingly big boom.'
+        self.conditions = []
+        self.id = 'alph_symbol'
 
 
-class Goal3(Goal):
-    """docstring for Goal3"""
-
+class Cosma(Goal):
+    """docstring for Cosma"""
     def __init__(self):
-        super(Goal3, self).__init__('Goal 3')
-        self.description = 'To win you need Keeper 5 and Keeper 6.'
-        self.conditions = ['Keeper 5', 'Keeper 6']
-        self.id = 'G3'
+        super(Cosma, self).__init__('Cosma')
+        self.description = 'As flighty and aimless as anything can be (if that thing is also giant-sized), Cosma is the Giant in charge of imagining up all things airborne. From the heaviest gas to cling to a cavern floor to the tiniest fart to escape from a butterfly, Cosma is the source of it all.'
+        self.conditions = []
+        self.id = 'cosma'
 
 
-class Goal4(Goal):
-    """docstring for Goal4"""
-
+class CosmaSymbol(Goal):
+    """docstring for CosmaSymbol"""
     def __init__(self):
-        super(Goal4, self).__init__('Goal 4')
-        self.description = 'To win you need Keeper 7 and Keeper 8.'
-        self.conditions = ['Keeper 7', 'Keeper 8']
-        self.id = 'G4'
+        super(CosmaSymbol, self).__init__('Cosma Symbol')
+        self.description = 'As flighty and aimless as anything can be (if that thing is also giant-sized), Cosma is the Giant in charge of imagining up all things airborne. From the heaviest gas to cling to a cavern floor to the tiniest fart to escape from a butterfly, Cosma is the source of it all.'
+        self.conditions = []
+        self.id = 'cosma_symbol'
 
 
-class Goal5(Goal):
-    """docstring for Goal5"""
-
+class Friendly(Goal):
+    """docstring for Friendly"""
     def __init__(self):
-        super(Goal5, self).__init__('Goal 5')
-        self.description = 'To win you need Keeper 9 and Keeper 10.'
-        self.conditions = ['Keeper 9', 'Keeper 10']
-        self.id = 'G5'
+        super(Friendly, self).__init__('Friendly')
+        self.description = 'Friendly is the overseer of darkness, nocturnal things, party-planning, of social activities and their most common lubricant, booze. Friendly by name, friendly by nature: unless you neglect to buy a round.'
+        self.conditions = []
+        self.id = 'friendly'
+
+
+class FriendlySymbol(Goal):
+    """docstring for Friendly Symbol"""
+    def __init__(self):
+        super(FriendlySymbol, self).__init__('Friendly Symbol')
+        self.description = 'Friendly is the overseer of darkness, nocturnal things, party-planning, of social activities and their most common lubricant, booze. Friendly by name, friendly by nature: unless you neglect to buy a round.'
+        self.conditions = []
+        self.id = 'friendly_symbol'
+
+
+class Grendaline(Goal):
+    """docstring for Grendaline"""
+    def __init__(self):
+        super(Grendaline, self).__init__('Grendaline')
+        self.description = 'Grendaline, raised in a swamp, has an imagination as free-flowing as water. This makes sense, as water is what she spends most of her time imagining. If it sprinkles, drips, flows or gushes, Grendaline is your giant.'
+        self.conditions = []
+        self.id = 'grendaline'
+
+
+class GrendalineSymbol(Goal):
+    """docstring for Grendaline Symbol"""
+    def __init__(self):
+        super(GrendalineSymbol, self).__init__('Grendaline Symbol')
+        self.description = 'Grendaline, raised in a swamp, has an imagination as free-flowing as water. This makes sense, as water is what she spends most of her time imagining. If it sprinkles, drips, flows or gushes, Grendaline is your giant.'
+        self.conditions = []
+        self.id = 'grendaline_symbol'
+
+
+class Humbaba(Goal):
+    """docstring for Humbaba"""
+    def __init__(self):
+        super(Humbaba, self).__init__('Humbaba')
+        self.description = 'Humbaba is the giant ruling over all creatures that walk, crawl, slither or sashay over Ur. One with the animals, Humbaba walks on all fours to be closer to them, and insists on them calling her by her first name. Which is kind of pointless, since she only has one name.'
+        self.conditions = []
+        self.id = 'humbaba'
+
+
+class HumbabaSymbol(Goal):
+    """docstring for Humbaba Symbol"""
+    def __init__(self):
+        super(HumbabaSymbol, self).__init__('Humbaba Symbol')
+        self.description = 'Humbaba is the giant ruling over all creatures that walk, crawl, slither or sashay over Ur. One with the animals, Humbaba walks on all fours to be closer to them, and insists on them calling her by her first name. Which is kind of pointless, since she only has one name.'
+        self.conditions = []
+        self.id = 'humbaba_symbol'
+
+
+class Lem(Goal):
+    """docstring for Lem"""
+    def __init__(self):
+        super(Lem, self).__init__('Lem')
+        self.description = 'Lem, the wanderer giant. Responsible for travel, directions, and knowledge. What Lem doesn\'t know is not worth knowing. Also, what Lem doesn\'t unknow is not worth unknowing. (That\'s Lem\'s favourite joke) (Lem doesn\'t know many jokes).'
+        self.conditions = []
+        self.id = 'lem'
+
+
+class LemSymbol(Goal):
+    """docstring for Lem Symbol"""
+    def __init__(self):
+        super(LemSymbol, self).__init__('Lem Symbol')
+        self.description = 'Lem, the wanderer giant. Responsible for travel, directions, and knowledge. What Lem doesn\'t know is not worth knowing. Also, what Lem doesn\'t unknow is not worth unknowing. (That\'s Lem\'s favourite joke) (Lem doesn\'t know many jokes).'
+        self.conditions = []
+        self.id = 'lem_symbol'
+
+
+class Mab(Goal):
+    """docstring for Mab"""
+    def __init__(self):
+        super(Mab, self).__init__('Mab')
+        self.description = 'When the harvest needs bringing in, the crops need counting, and the job needs doing right, Mab, Giant of Soil and Harvests, first to lie down and start imagining Ur into being is the giant to look to.'
+        self.conditions = []
+        self.id = 'mab'
+
+
+class MabSymbol(Goal):
+    """docstring for Mab Symbol"""
+    def __init__(self):
+        super(MabSymbol, self).__init__('Mab Symbol')
+        self.description = 'When the harvest needs bringing in, the crops need counting, and the job needs doing right, Mab, Giant of Soil and Harvests, first to lie down and start imagining Ur into being is the giant to look to.'
+        self.conditions = []
+        self.id = 'mab_symbol'
+
+
+class Pot(Goal):
+    """docstring for Pot"""
+    def __init__(self):
+        super(Pot, self).__init__('Pot')
+        self.description = 'Round of belly and capacious of stomach Pot is the Giant of Prosperity, with dominion over anything edible, cookable, munchable or nibbleworthy. Pot himself is not munchable. Do not attempt to munch any giants.'
+        self.conditions = []
+        self.id = 'pot'
+
+
+class PotSymbol(Goal):
+    """docstring for Pot Symbol"""
+    def __init__(self):
+        super(PotSymbol, self).__init__('Pot Symbol')
+        self.description = 'Round of belly and capacious of stomach Pot is the Giant of Prosperity, with dominion over anything edible, cookable, munchable or nibbleworthy. Pot himself is not munchable. Do not attempt to munch any giants.'
+        self.conditions = []
+        self.id = 'pot_symbol'
+
+
+class Spriggan(Goal):
+    """docstring for Spriggan"""
+    def __init__(self):
+        super(Spriggan, self).__init__('Spriggan')
+        self.description = 'Before Spriggan, no giant had ever imagined a tree. After Spriggan, no giant ever needed to, because he had already imagined them all. Steadfast, persistent, and somewhat rigid, Spriggan is the slumbering Giant of all Trees and Plants. Or "Trants".'
+        self.conditions = []
+        self.id = 'spriggan'
+
+
+class SprigganSymbol(Goal):
+    """docstring for Spriggan Symbol"""
+    def __init__(self):
+        super(SprigganSymbol, self).__init__('Spriggan Symbol')
+        self.description = 'Before Spriggan, no giant had ever imagined a tree. After Spriggan, no giant ever needed to, because he had already imagined them all. Steadfast, persistent, and somewhat rigid, Spriggan is the slumbering Giant of all Trees and Plants. Or "Trants".'
+        self.conditions = []
+        self.id = 'spriggan_symbol'
+
+
+class Tii(Goal):
+    """docstring for Tii"""
+    def __init__(self):
+        super(Tii, self).__init__('Tii')
+        self.description = 'The Giant with power over all numbers. Odd or even, prime or not-prime, cubed or rooted, Tii keeps a cold, watchful eye over Ur. Tii sees all, knows all, calculates all. Never underestimate Tii. Tii has already correctly estimated you.'
+        self.conditions = []
+        self.id = 'tii'
+
+
+class TiiSymbol(Goal):
+    """docstring for Tii Symbol"""
+    def __init__(self):
+        super(TiiSymbol, self).__init__('Tii Symbol')
+        self.description = 'The Giant with power over all numbers. Odd or even, prime or not-prime, cubed or rooted, Tii keeps a cold, watchful eye over Ur. Tii sees all, knows all, calculates all. Never underestimate Tii. Tii has already correctly estimated you.'
+        self.conditions = []
+        self.id = 'tii_symbol'
+
+
+class Zille(Goal):
+    """docstring for Zille"""
+    def __init__(self):
+        super(Zille, self).__init__('Zille')
+        self.description = 'Zille is the giant with dominion over the mountains. All rocks, caverns, hillocks, pingos, buttes and drumlins thank Zille for their existence. Zille, busy imagining up new flavours of gravel, acknowledges their thanks.'
+        self.conditions = []
+        self.id = 'zille'
+
+
+class ZilleSymbol(Goal):
+    """docstring for Zille Symbol"""
+    def __init__(self):
+        super(ZilleSymbol, self).__init__('Zille Symbol')
+        self.description = 'Zille is the giant with dominion over the mountains. All rocks, caverns, hillocks, pingos, buttes and drumlins thank Zille for their existence. Zille, busy imagining up new flavours of gravel, acknowledges their thanks.'
+        self.conditions = []
+        self.id = 'zille_symbol'
 
 
 def allGoals():
-    return [Goal1(), Goal2(), Goal3(), Goal4(), Goal5()]
+    return [Alph(), AlphSymbol(), Cosma(), CosmaSymbol(), Friendly(), FriendlySymbol(), Grendaline(), GrendalineSymbol(), Humbaba(), HumbabaSymbol(), Lem(), LemSymbol(), Mab(), MabSymbol(), Pot(), PotSymbol(), Spriggan(), SprigganSymbol(), Tii(), TiiSymbol(), Zille(), ZilleSymbol()]
