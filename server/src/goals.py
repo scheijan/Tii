@@ -229,7 +229,7 @@ class IlmenskieJones(Goal):
         self.id = 'ilmenskie-jones'
 
 class GameshowWheel(Goal):
-    """docstring for Ilmenskie Jones"""
+    """docstring for Gameshow Wheel"""
     def __init__(self):
         super(GameshowWheel, self).__init__('Gameshow Wheel')
         self.description = 'some description here'
@@ -237,7 +237,7 @@ class GameshowWheel(Goal):
         self.id = 'gameshow-wheel'
 
 class MusicblockGng(Goal):
-    """docstring for Ilmenskie Jones"""
+    """docstring for Musicblock GNG"""
     def __init__(self):
         super(MusicblockGng, self).__init__('Musicblock GNG')
         self.description = 'some description here'
@@ -248,4 +248,4 @@ class MusicblockGng(Goal):
 
 
 def allGoals():
-    return [Alph(), AlphSymbol(), Cosma(), CosmaSymbol(), Friendly(), FriendlySymbol(), Grendaline(), GrendalineSymbol(), Humbaba(), HumbabaSymbol(), Lem(), LemSymbol(), Mab(), MabSymbol(), Pot(), PotSymbol(), Spriggan(), SprigganSymbol(), Tii(), TiiSymbol(), Zille(), ZilleSymbol()]
+    return [Alph(), AlphSymbol(), Cosma(), CosmaSymbol(), Friendly(), FriendlySymbol(), Grendaline(), GrendalineSymbol(), Humbaba(), HumbabaSymbol(), Lem(), LemSymbol(), Mab(), MabSymbol(), Pot(), PotSymbol(), Spriggan(), SprigganSymbol(), Tii(), TiiSymbol(), Zille(), ZilleSymbol(), IlmenskieJones(), GameshowWheel(), MusicblockGng()]

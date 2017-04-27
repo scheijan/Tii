@@ -44,7 +44,7 @@ class Game(object):
             self.restock()
         return self.stack.draw(count)
 
-    def discard(self, card):
+    def discardCard(self, card):
         """discard a single card and add it to the discard stack"""
         self.discard.add(card)
 
@@ -132,6 +132,9 @@ class Player(object):
 
         self.deck = Stack()
 
+        self.cardsPlayed = 0
+        self.cardsDrawn = 0
+
     def __repr__(self):
         return '%s: %s / %s' % (self.name, self.hand, self.deck)
 
@@ -140,6 +143,7 @@ class Player(object):
         if len(self.hand) > 0:
             c = self.hand.remove(card)
             c.play(self.game, self.number)
+            self.cardsPlayed += 1
 
     def draw(self, count=1):
         """draw a card from the stack, repeat until it's not a creeper"""
@@ -152,6 +156,8 @@ class Player(object):
         drawn = [c for c in drawn if c.category != 'creeper']
         # print('Player %s draws card(s): %s' % (self.number, drawn))
         self.hand.add(drawn)
+        self.cardsDrawn += len(drawn)
+        print(self.cardsDrawn)
 
     def hasCreeper(self):
         """check player's deck for creepers"""
@@ -171,10 +177,47 @@ class Player(object):
 
     def turn(self):
         """simulate a player's turn: draw cards and play the first card on hand"""
-        self.draw(self.game.cardsToDraw)
-        for i in range(0, self.game.cardsToPlay):
+        self.cardsDrawn = 0
+        self.cardsPlayed = 0
+        while not self.obeysDrawLimit():
+            self.draw(1)
+        while not self.obeysPlayLimit():
             self.play(0)
-        return self.endTurn()
+        while not self.obeysHandLimit():
+            card = self.hand.remove(0)
+            self.game.discardCard(card)
+        while not self.obeysKeeperLimit():
+            card = self.deck.remove(0)
+            self.game.discardCard(card)
+
+        if self.canEndTurn():
+            return self.endTurn()
+        else:
+            print("can't end turn")
+
+    def obeysHandLimit(self):
+        """ensure player obeys hand limit"""
+        print("hand limit")
+        return self.game.handLimit > len(self.hand) or self.game.handLimit == -1
+
+    def obeysKeeperLimit(self):
+        """ensure player obeys keeper limit"""
+        print("keeper limit")
+        return self.game.keeperLimit > len(self.deck) or self.game.keeperLimit == -1
+
+    def obeysDrawLimit(self):
+        """ensure player draws correct number of cards"""
+        print("draw limit")
+        return self.game.cardsToDraw == self.cardsDrawn
+
+    def obeysPlayLimit(self):
+        """ensure player plays correct number of cards"""
+        print("play limit")
+        return self.game.cardsToPlay == self.cardsPlayed
+
+    def canEndTurn(self):
+        """evaluates if ending a turn is allowed"""
+        return self.obeysHandLimit() and self.obeysKeeperLimit() and self.obeysDrawLimit() and self.obeysPlayLimit()
 
     def endTurn(self):
         """ends a turn and checks for win conditions, increases the turn counter"""
