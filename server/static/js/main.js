@@ -32,9 +32,9 @@ function getData(n) {
     $('#board').prepend(snippet)
 
     
-    for (var i = 0; i < result.deck._cards.length; i++) {
-      var c = result.deck._cards[i];
-      $('#deck').append('<div class="smallcard draggable" id="' + c.id + '"><img class="smallimg" src="/static/pics/cards/' + c.category + 's/' + c.id + '.png" /></div>')
+    for (var i = 0; i < result.field._cards.length; i++) {
+      var c = result.field._cards[i];
+      $('#field').append('<div class="smallcard draggable" id="' + c.id + '"><img class="smallimg" src="/static/pics/cards/' + c.category + 's/' + c.id + '.png" /></div>')
     }
 
     for (var i = 0; i < result.hand._cards.length; i++) {
