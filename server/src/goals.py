@@ -220,6 +220,7 @@ class ZilleSymbol(Goal):
         self.conditions = ['batterfly', 'dark-patch']
         self.id = 'zille_symbol'
 
+
 class IlmenskieJones(Goal):
     """docstring for Ilmenskie Jones"""
     def __init__(self):
@@ -227,6 +228,7 @@ class IlmenskieJones(Goal):
         self.description = 'some description here'
         self.conditions = ['piggy', 'sparkly']
         self.id = 'ilmenskie-jones'
+
 
 class GameshowWheel(Goal):
     """docstring for Gameshow Wheel"""
@@ -236,6 +238,7 @@ class GameshowWheel(Goal):
         self.conditions = []
         self.id = 'gameshow-wheel'
 
+
 class MusicblockGng(Goal):
     """docstring for Musicblock GNG"""
     def __init__(self):
@@ -244,8 +247,7 @@ class MusicblockGng(Goal):
         self.conditions = ['crab', 'crabato-juice']
         self.id = 'musicblock-gng'
 
-        
 
-
+# CosmaSymbol(), GrendalineSymbol(), SprigganSymbol(), SprigganSymbol(), GameshowWheel()
 def allGoals():
-    return [Alph(), AlphSymbol(), Cosma(), CosmaSymbol(), Friendly(), FriendlySymbol(), Grendaline(), GrendalineSymbol(), Humbaba(), HumbabaSymbol(), Lem(), LemSymbol(), Mab(), MabSymbol(), Pot(), PotSymbol(), Spriggan(), SprigganSymbol(), Tii(), TiiSymbol(), Zille(), ZilleSymbol(), IlmenskieJones(), GameshowWheel(), MusicblockGng()]
+    return [Alph(), AlphSymbol(), Cosma(), Friendly(), FriendlySymbol(), Grendaline(),  Humbaba(), HumbabaSymbol(), Lem(), LemSymbol(), Mab(), MabSymbol(), Pot(), PotSymbol(), Spriggan(), Tii(), TiiSymbol(), Zille(), ZilleSymbol(), IlmenskieJones(), MusicblockGng()]
