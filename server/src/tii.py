@@ -183,6 +183,8 @@ class Player(object):
         self.cardsPlayed = 0
         while not self.obeysDrawLimit():
             self.draw(1)
+            while not self.obeysDrawLimit():
+                self.draw(1)
         while not self.obeysPlayLimit() and not self.game.won:
             self.play(0)
         while not self.obeysHandLimit() and not self.game.won:
