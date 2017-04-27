@@ -210,7 +210,7 @@ class Player(object):
     def obeysDrawLimit(self):
         """ensure player draws correct number of cards"""
         print("draw limit: %s (drawn: %s)" % (self.game.cardsToDraw, self.cardsDrawn))
-        return self.game.cardsToDraw == self.cardsDrawn
+        return self.game.cardsToDraw == self.cardsDrawn or len(self.game.stack) == 0
 
     def obeysPlayLimit(self):
         """ensure player plays correct number of cards"""
