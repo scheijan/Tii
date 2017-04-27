@@ -111,17 +111,17 @@ class Game(object):
         c.stack = None
         p = self.players[playerNr]
         c.hand = p.hand
-        c.deck = p.deck
+        c.field = p.field
         c.name = p.name
         c.players = []
         for p in [player for player in self.players if player.number != playerNr]:
-            c.players.append({'name': p.name, 'deck': p.deck, 'number': p.number})
+            c.players.append({'name': p.name, 'field': p.field, 'number': p.number})
 
         return jsonpickle.encode(c, unpicklable=False)
 
 
 class Player(object):
-    """base class for a player with name, number and empty stacks for their hand and deck"""
+    """base class for a player with name, number and empty stacks for their hand and field"""
 
     def __init__(self, number, game):
         super(Player, self).__init__()
@@ -131,13 +131,13 @@ class Player(object):
         self.game = game
         self.hand = Stack()
 
-        self.deck = Stack()
+        self.field = Stack()
 
         self.cardsPlayed = 0
         self.cardsDrawn = 0
 
     def __repr__(self):
-        return '%s: %s / %s' % (self.name, self.hand, self.deck)
+        return '%s: %s / %s' % (self.name, self.hand, self.field)
 
     def play(self, card):
         """remove the passed card from the player's hand and play it"""
@@ -161,9 +161,9 @@ class Player(object):
         print("%s draws %s cards" % (self.name, self.cardsDrawn))
 
     def hasCreeper(self):
-        """check player's deck for creepers"""
+        """check player's field for creepers"""
         result = False
-        for c in self.deck:
+        for c in self.field:
             if c.category == 'creeper':
                 result = True
         return result
@@ -171,7 +171,7 @@ class Player(object):
     def hasKeeper(self, name):
         """check whether the player has a certain keeper/creeper"""
         result = False
-        for c in self.deck:
+        for c in self.field:
             if c.name == name:
                 result = True
         return result
@@ -189,7 +189,7 @@ class Player(object):
             card = self.hand.remove(0)
             self.game.discardCard(card)
         while not self.obeysKeeperLimit():
-            card = self.deck.remove(0)
+            card = self.field.remove(0)
             self.game.discardCard(card)
 
         if self.canEndTurn():
@@ -204,8 +204,8 @@ class Player(object):
 
     def obeysKeeperLimit(self):
         """ensure player obeys keeper limit"""
-        print("keeper limit: %s (keepers out: %s)" % (self.game.keeperLimit, len(self.deck)))
-        return self.game.keeperLimit >= len(self.deck) or self.game.keeperLimit == -1
+        print("keeper limit: %s (keepers out: %s)" % (self.game.keeperLimit, len(self.field)))
+        return self.game.keeperLimit >= len(self.field) or self.game.keeperLimit == -1
 
     def obeysDrawLimit(self):
         """ensure player draws correct number of cards"""
@@ -266,7 +266,7 @@ class Stack(object):
         random.shuffle(self._cards)
 
     def draw(self, count=1):
-        """draw a card from the deck if possible"""
+        """draw a card from the stack if possible"""
         if len(self._cards) == 0:
             return []
         elif len(self._cards) < count:
@@ -283,7 +283,7 @@ class Stack(object):
             self._cards.append(cards)
 
     def remove(self, card):
-        """remove a card from the deck"""
+        """remove a card from the stack"""
         result = self._cards[card]
         del self._cards[card]
         return result

@@ -9,11 +9,11 @@ class Keeper(Card):
         self.id = id
 
     def play(self, game, playerNumber):
-        """add the keeper to the player's deck"""
+        """add the keeper to the player's field"""
         # needs check for keeper limit?
         super(Keeper, self).play(game, playerNumber)
         p = game.players[playerNumber]
-        p.deck.add(self)
+        p.field.add(self)
 
 
 class Creeper(Keeper):
