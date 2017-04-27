@@ -52,6 +52,6 @@ KEEPERS = ['batterfly', 'butterfly', 'chicken', 'crab', 'fox', 'piggy', 'salmon'
 
 
 def allKeepers():
-    result = [Creeper1('C1'), Creeper2('C2'), Creeper3('C3'), Creeper4('C4')]
-    result += [Keeper(k, k) for k in KEEPERS]
+    # result = [Creeper1('C1'), Creeper2('C2'), Creeper3('C3'), Creeper4('C4')]
+    result = [Keeper(k, k) for k in KEEPERS]
     return result
