@@ -46,7 +46,7 @@ class Cosma(Goal):
     def __init__(self):
         super(Cosma, self).__init__('Cosma')
         self.description = 'As flighty and aimless as anything can be (if that thing is also giant-sized), Cosma is the Giant in charge of imagining up all things airborne. From the heaviest gas to cling to a cavern floor to the tiniest fart to escape from a butterfly, Cosma is the source of it all.'
-        self.conditions = ['focusing-orb' and 'paper']
+        self.conditions = ['focusing-orb', 'paper']
         self.id = 'cosma'
 
 
