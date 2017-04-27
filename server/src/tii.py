@@ -89,6 +89,7 @@ class Game(object):
 
         result += 'round: %s\n' % self.round
         result += 'current goal: %s\n' % self.goal
+        result += 'conditions: %s\n' % self.goal.conditions
         result += 'number of cards on the main stack: %s\n' % len(self.stack)
         result += 'number of cards on the discard stack: %s\n' % len(self.discard)
         result += 'number of rules: %s\n' % len(self.rules)
@@ -177,6 +178,7 @@ class Player(object):
 
     def turn(self):
         """simulate a player's turn: draw cards and play the first card on hand"""
+        print(self.name + " begins")
         self.cardsDrawn = 0
         self.cardsPlayed = 0
         while not self.obeysDrawLimit():
@@ -197,23 +199,23 @@ class Player(object):
 
     def obeysHandLimit(self):
         """ensure player obeys hand limit"""
-        print("hand limit")
-        return self.game.handLimit > len(self.hand) or self.game.handLimit == -1
+        print("hand limit: %d (hand: %d)" % (self.game.handLimit, len(self.hand)))
+        return self.game.handLimit >= len(self.hand) or self.game.handLimit == -1
 
     def obeysKeeperLimit(self):
         """ensure player obeys keeper limit"""
-        print("keeper limit")
-        return self.game.keeperLimit > len(self.deck) or self.game.keeperLimit == -1
+        print("keeper limit: %d (keepers out: %d)" % (self.game.keeperLimit, len(self.deck)))
+        return self.game.keeperLimit >= len(self.deck) or self.game.keeperLimit == -1
 
     def obeysDrawLimit(self):
         """ensure player draws correct number of cards"""
-        print("draw limit")
+        print("draw limit: " + str(self.game.cardsToDraw) + " (drawn: " + str(self.cardsDrawn) + ")")
         return self.game.cardsToDraw == self.cardsDrawn
 
     def obeysPlayLimit(self):
         """ensure player plays correct number of cards"""
-        print("play limit")
-        return self.game.cardsToPlay == self.cardsPlayed
+        print("play limit: %d (played: %d, hand: %d)" % (self.game.cardsToPlay, self.cardsPlayed, len(self.hand)))
+        return self.game.cardsToPlay == self.cardsPlayed or len(self.hand) == 0
 
     def canEndTurn(self):
         """evaluates if ending a turn is allowed"""
@@ -237,6 +239,7 @@ class Player(object):
         else:
             if self.number == self.game.numberOfPlayers - 1:
                 self.game.round += 1
+                print("round %s" % self.game.round)
         return won
 
 
