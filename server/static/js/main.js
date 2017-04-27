@@ -31,7 +31,10 @@ function getData(n) {
     snippet = snippet + '</div>'
     $('#board').prepend(snippet)
 
-    
+    if (result.goal) {
+      $('#goalStack').append('<div class="smallcard draggable" id="' + result.goal.id + '"><img class="smallimg" src="/static/pics/cards/goals/' + result.goal.id + '.png" /></div>')
+    }
+      
     for (var i = 0; i < result.field._cards.length; i++) {
       var c = result.field._cards[i];
       $('#field').append('<div class="smallcard draggable" id="' + c.id + '"><img class="smallimg" src="/static/pics/cards/' + c.category + 's/' + c.id + '.png" /></div>')
