@@ -185,6 +185,8 @@ class Player(object):
             self.draw(1)
         while not self.obeysPlayLimit() and not self.game.won:
             self.play(0)
+            while not self.obeysDrawLimit():
+                self.draw(1)
         while not self.obeysHandLimit() and not self.game.won:
             card = self.hand.remove(0)
             self.game.discardCard(card)
