@@ -183,12 +183,12 @@ class Player(object):
         self.cardsPlayed = 0
         while not self.obeysDrawLimit():
             self.draw(1)
-        while not self.obeysPlayLimit():
+        while not self.obeysPlayLimit() and not self.game.won:
             self.play(0)
-        while not self.obeysHandLimit():
+        while not self.obeysHandLimit() and not self.game.won:
             card = self.hand.remove(0)
             self.game.discardCard(card)
-        while not self.obeysKeeperLimit():
+        while not self.obeysKeeperLimit() and not self.game.won:
             card = self.field.remove(0)
             self.game.discardCard(card)
 
@@ -219,7 +219,7 @@ class Player(object):
 
     def canEndTurn(self):
         """evaluates if ending a turn is allowed"""
-        return self.obeysHandLimit() and self.obeysKeeperLimit() and self.obeysDrawLimit() and self.obeysPlayLimit()
+        return self.game.won or (self.obeysHandLimit() and self.obeysKeeperLimit() and self.obeysDrawLimit() and self.obeysPlayLimit())
 
     def endTurn(self):
         """ends a turn and checks for win conditions, increases the turn counter"""
