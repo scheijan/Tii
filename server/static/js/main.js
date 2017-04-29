@@ -24,12 +24,13 @@ function handleDropEvent( event, ui ) {
 
 function getData(n) {
   $.getJSON("/state?n=" + n, function(result){
-    var snippet = '<div class="gameinfo">';
+    var snippet = '';
     snippet = snippet + '<div>Name: ' + result.name + '</div>';
     snippet = snippet + '<div>Round: ' + result.round + '</div>';
+    
     snippet = snippet + '<div>Draw: ' + result.cardsToDraw + ' / Play:' + result.cardsToPlay + '</div>';
-    snippet = snippet + '</div>'
-    $('#board').prepend(snippet)
+    $('#gameinfo').empty();
+    $('#gameinfo').prepend(snippet);
 
     if (result.goal) {
       $('#goalStack').append('<div class="smallcard draggable" id="' + result.goal.id + '"><img class="smallimg" src="/static/pics/cards/goals/' + result.goal.id + '.png" /></div>')
