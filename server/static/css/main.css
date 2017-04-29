@@ -21,6 +21,15 @@ body {
   margin: 3px;
 }
 
+.textcard {
+  text-align: center;
+  margin-top: 50%;
+  color: SlateGrey;
+  font-weight: bold;
+  font-size: larger;
+  font-family: Impact, Impact5, Charcoal6, sans-serif;
+}
+
 .smallimg {  
   max-height: 100%;  
   max-width: 100%; 
