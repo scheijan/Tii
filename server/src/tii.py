@@ -31,7 +31,7 @@ class Game(object):
         self.won = False
         self.winner = None
 
-        self.rules = []
+        self.rules = Stack()
 
         self.initStack()
 
@@ -58,7 +58,7 @@ class Game(object):
         """add the passed rule card to the list of current rules"""
         # remove obsolete rules and discard them
         print('new rule: %s' % rule)
-        self.rules.append(rule)
+        self.rules.add(rule)
 
     def initStack(self):
         """initialize a standard deck of cards and shuffle them"""
@@ -216,8 +216,19 @@ class Player(object):
 
     def obeysPlayLimit(self):
         """ensure player plays correct number of cards"""
+        result = False
+        # if the player has 0 cards we return true
+        if len(self.hand) == 0:
+            result = True
+        # if the rule is "Play All" and the player has not 0 cards, we return false
+        elif self.game.rules.hasCard('PlayAll'):
+            result = False
+        # otherwise we check whether the player has player enough cards this round
+        elif self.game.cardsToPlay == self.cardsPlayed:
+            result = True
+
         print("play limit: %s (played: %s, hand: %s)" % (self.game.cardsToPlay, self.cardsPlayed, len(self.hand)))
-        return self.game.cardsToPlay == self.cardsPlayed or len(self.hand) == 0
+        return result
 
     def canEndTurn(self):
         """evaluates if ending a turn is allowed"""
@@ -297,6 +308,13 @@ class Stack(object):
     def getLimit(self):
         """get the limit of the stack"""
         return self._limit
+
+    def hasCard(self, cardID):
+        """check for a specific card in this stack"""
+        for card in self._cards:
+            if card.id == cardID:
+                return True
+        return False
 
 
 if __name__ == '__main__':
