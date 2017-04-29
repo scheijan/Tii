@@ -48,7 +48,6 @@ class TiiServer(object):
         template = self.jinjaEnv.get_template('board.html')
         return template.render(n=n, extraScripts=extraScripts)
 
-
     @cherrypy.expose
     def state(self, n=1):
         return self.game.playerState(int(n))
