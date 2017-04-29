@@ -1,4 +1,4 @@
-from tii import Card
+from cards import Card
 
 
 class Keeper(Card):

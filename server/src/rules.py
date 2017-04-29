@@ -1,4 +1,4 @@
-from tii import *
+from cards import Card
 
 
 class Rule(Card):
