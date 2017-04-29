@@ -20,6 +20,7 @@ class HandLimit1(Rule):
 
     def __init__(self):
         super(HandLimit1, self).__init__('Hand Limit 1')
+        self.type = 'hand'
 
     def play(self, game, playerNumber):
         super(HandLimit1, self).play(game, playerNumber)
@@ -32,6 +33,7 @@ class HandLimit2(Rule):
 
     def __init__(self):
         super(HandLimit2, self).__init__('Hand Limit 2')
+        self.type = 'hand'
 
     def play(self, game, playerNumber):
         super(HandLimit2, self).play(game, playerNumber)
@@ -44,6 +46,7 @@ class HandLimit3(Rule):
 
     def __init__(self):
         super(HandLimit3, self).__init__('Hand Limit 3')
+        self.type = 'hand'
 
     def play(self, game, playerNumber):
         super(HandLimit3, self).play(game, playerNumber)
@@ -56,6 +59,7 @@ class HandLimit4(Rule):
 
     def __init__(self):
         super(HandLimit4, self).__init__('Hand Limit 4')
+        self.type = 'hand'
 
     def play(self, game, playerNumber):
         super(HandLimit4, self).play(game, playerNumber)
@@ -68,6 +72,7 @@ class KeeperLimit4(Rule):
 
     def __init__(self):
         super(KeeperLimit4, self).__init__('Keeper Limit 4')
+        self.type = 'keeper'
 
     def play(self, game, playerNumber):
         super(KeeperLimit4, self).play(game, playerNumber)
@@ -80,6 +85,7 @@ class Play2(Rule):
 
     def __init__(self):
         super(Play2, self).__init__('Play 2')
+        self.type = 'play'
 
     def play(self, game, playerNumber):
         super(Play2, self).play(game, playerNumber)
@@ -92,6 +98,7 @@ class Play3(Rule):
 
     def __init__(self):
         super(Play3, self).__init__('Play 3')
+        self.type = 'play'
 
     def play(self, game, playerNumber):
         super(Play3, self).play(game, playerNumber)
@@ -104,6 +111,7 @@ class Play4(Rule):
 
     def __init__(self):
         super(Play4, self).__init__('Play 4')
+        self.type = 'play'
 
     def play(self, game, playerNumber):
         super(Play4, self).play(game, playerNumber)
@@ -116,6 +124,7 @@ class PlayAll(Rule):
 
     def __init__(self):
         super(PlayAll, self).__init__('Play All')
+        self.type = 'play'
 
     def play(self, game, playerNumber):
         super(PlayAll, self).play(game, playerNumber)
@@ -128,6 +137,7 @@ class Draw2(Rule):
 
     def __init__(self):
         super(Draw2, self).__init__('Draw 2')
+        self.type = 'draw'
 
     def play(self, game, playerNumber):
         super(Draw2, self).play(game, playerNumber)
@@ -140,6 +150,7 @@ class Draw3(Rule):
 
     def __init__(self):
         super(Draw3, self).__init__('Draw 3')
+        self.type = 'draw'
 
     def play(self, game, playerNumber):
         super(Draw3, self).play(game, playerNumber)
@@ -152,6 +163,7 @@ class Draw4(Rule):
 
     def __init__(self):
         super(Draw4, self).__init__('Draw 4')
+        self.type = 'draw'
 
     def play(self, game, playerNumber):
         super(Draw4, self).play(game, playerNumber)
@@ -164,6 +176,7 @@ class Draw5(Rule):
 
     def __init__(self):
         super(Draw5, self).__init__('Draw 5')
+        self.type = 'draw'
 
     def play(self, game, playerNumber):
         super(Draw5, self).play(game, playerNumber)

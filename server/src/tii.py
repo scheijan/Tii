@@ -31,7 +31,7 @@ class Game(object):
         self.won = False
         self.winner = None
 
-        self.rules = Stack()
+        self.rules = RulesStack()
 
         self.initStack()
 
@@ -315,6 +315,19 @@ class Stack(object):
             if card.id == cardID:
                 return True
         return False
+
+
+class RulesStack(Stack):
+    """special stack for rules, only allows one card per type, removes cards automatically as necessary"""
+
+    def add(self, cards):
+        """adds rules to the stack and removes all rules with the same types"""
+        if not isinstance(cards, list):
+            cards = [cards]
+        for newCard in cards:
+            self._cards = [card for card in self._cards if not card.type == newCard.type]
+
+        super(RulesStack, self).add(cards)
 
 
 if __name__ == '__main__':
