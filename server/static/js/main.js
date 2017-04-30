@@ -81,7 +81,7 @@ function createCard(card) {
               <div class="front">\
                 <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
               </div>\
-              <div class="back"> ' + card.description + '</div>\
+              <div class="back goalcardback card"><br/><b>' + card.name + '</b><br/><br/>' + card.description + '</div>\
             </div>'
   } else {
     return '<div class="smallcard draggable" id="' + card.id + '">\
