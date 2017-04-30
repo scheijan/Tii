@@ -28,7 +28,7 @@ function getData(n) {
     snippet = snippet + '<div>Name: ' + result.name + '</div>';
     snippet = snippet + '<div>Round: ' + result.round + '</div>';
     
-    snippet = snippet + '<div>Draw: ' + result.cardsToDraw + ' / Play:' + result.cardsToPlay + '</div>';
+    snippet = snippet + '<div>Draw: ' + result.gameData.cardsToDraw + ' / Play:' + result.gameData.cardsToPlay + '</div>';
     
     $('#gameinfo').html(snippet);
 
@@ -40,7 +40,7 @@ function getData(n) {
     $('#rules').append('<div class="label">Rules</div>');
     for (var i = 0; i < result.rules._cards.length; i++) {
       var c = result.rules._cards[i];
-      $('#rules').append()
+      $('#rules').append(createCard(c))
     }
       
     $('#field').empty();
