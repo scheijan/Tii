@@ -19,6 +19,9 @@ body {
   position: relative;
   display: inline-block;
   margin: 3px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;
 }
 
 .textcard {
@@ -28,6 +31,9 @@ body {
   font-weight: bold;
   font-size: larger;
   font-family: Impact, Impact5, Charcoal6, sans-serif;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 1.0s linear;  
 }
 
 .label {
@@ -112,4 +118,22 @@ body {
 
 #discard {
   float: left;
+}
+
+img.card.textcardback {
+  margin-top: -74%;
+  padding: 0px;
+}
+
+.front {
+  
+}
+.back {
+  font-size: 8pt;
+  padding: 2px;
+  transform: rotateY( 180deg );
+}
+
+.flipped {
+  transform: rotateY( 180deg );
 }

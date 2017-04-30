@@ -14,6 +14,9 @@ function init() {
       accept: '.draggable',
     });
 }
+function flip() {
+  $('.smallcard').toggleClass('flipped');
+}
 
 function handleDropEvent( event, ui ) {
   var draggable = ui.draggable;
@@ -31,9 +34,10 @@ function getData(n) {
     snippet = snippet + '<div>Draw: ' + result.gameData.cardsToDraw + ' / Play:' + result.gameData.cardsToPlay + '</div>';
     
     $('#gameinfo').html(snippet);
+    $('#gameinfo').append('<button onclick="flip()">flip</button>');
 
     if (result.goal) {
-      $('#goalStack').html(result.goal);
+      $('#goalStack').html(createCard(result.goal));
     }
 
     $('#rules').empty();
@@ -64,8 +68,29 @@ function getData(n) {
 
 function createCard(card) {
   if (card.category === 'rule') {
-    return '<div class="smallcard draggable" id="' + card.id + '"><div class="textcard">' + card.name + '</div></div>'
+    return '<div class="smallcard draggable" id="' + card.id + '">\
+              <div class="front">\
+                <div class="textcard">' + card.name + '</div>\
+              </div>\
+              <div class="back textcardback">\
+                <img class="card textcardback" src="/static/pics/card.png"/>\
+              </div>\
+            </div>'
+  } else if (card.category === 'goal') {
+    return '<div class="smallcard draggable" id="' + card.id + '">\
+              <div class="front">\
+                <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
+              </div>\
+              <div class="back"> ' + card.description + '</div>\
+            </div>'
   } else {
-    return '<div class="smallcard draggable" id="' + card.id + '"><img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" /></div>'
+    return '<div class="smallcard draggable" id="' + card.id + '">\
+               <div class="front">\
+                <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
+              </div>\
+              <div class="back">\
+                <img class="card" src="/static/pics/card.png"/>\
+              </div>\
+            </div>'
   }
 }
