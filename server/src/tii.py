@@ -22,10 +22,10 @@ class Game(object):
         for i in range(0, numberOfPlayers):
             self.players.append(Player(i, self))
         self.goal = None
-        self.handLimit = -1
-        self.keeperLimit = -1
-        self.cardsToDraw = 1
-        self.cardsToPlay = 1
+        self._handLimit = -1
+        self._keeperLimit = -1
+        self._cardsToDraw = 1
+        self._cardsToPlay = 1
         self.round = 0
         self.won = False
         self.winner = None
@@ -36,6 +36,54 @@ class Game(object):
 
         for player in self.players:
             player.draw(3)
+
+    @property
+    def handLimit(self):
+        if self._handLimit == -1:
+            return -1
+        elif self.rules.hasCard('Mathematical'):
+            return self._handLimit + 1
+        else:
+            return self._handLimit
+
+    @handLimit.setter
+    def handLimit(self, newHandLimit):
+        self._handLimit = newHandLimit
+
+    @property
+    def keeperLimit(self):
+        if self._keeperLimit == -1:
+            return -1
+        elif self.rules.hasCard('Mathematical'):
+            return self._keeperLimit + 1
+        else:
+            return self._keeperLimit
+
+    @keeperLimit.setter
+    def keeperLimit(self, newKeeperLimit):
+        self._keeperLimit = newKeeperLimit
+
+    @property
+    def cardsToDraw(self):
+        if self.rules.hasCard('Mathematical'):
+            return self._cardsToDraw + 1
+        else:
+            return self._cardsToDraw
+
+    @cardsToDraw.setter
+    def cardsToDraw(self, newCardsToDraw):
+        self._cardsToDraw = newCardsToDraw
+
+    @property
+    def cardsToPlay(self):
+        if self.rules.hasCard('Mathematical'):
+            return self._cardsToPlay + 1
+        else:
+            return self._cardsToPlay
+
+    @cardsToPlay.setter
+    def cardsToPlay(self, newCardsToPlay):
+        self._cardsToPlay = newCardsToPlay
 
     def drawFromStack(self, count=1):
         """draw a card from the stack and return it, restock if necessary"""
