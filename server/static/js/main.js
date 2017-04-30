@@ -33,30 +33,39 @@ function getData(n) {
     $('#gameinfo').html(snippet);
 
     if (result.goal) {
-      $('#goalStack').html('<div class="smallcard draggable" id="' + result.goal.id + '"><img class="smallimg" src="/static/pics/cards/goals/' + result.goal.id + '.png" /></div>')
+      $('#goalStack').html(result.goal);
     }
 
     $('#rules').empty();
     $('#rules').append('<div class="label">Rules</div>');
     for (var i = 0; i < result.rules._cards.length; i++) {
       var c = result.rules._cards[i];
-      $('#rules').append('<div class="smallcard draggable" id="' + c.id + '"><div class="textcard">' + c.name + '</div></div>')
+      $('#rules').append()
     }
       
     $('#field').empty();
     $('#field').append('<div class="label">Field</div>');
     for (var i = 0; i < result.field._cards.length; i++) {
       var c = result.field._cards[i];
-      $('#field').append('<div class="smallcard draggable" id="' + c.id + '"><img class="smallimg" src="/static/pics/cards/' + c.category + 's/' + c.id + '.png" /></div>')
+      $('#field').append(createCard(c))
     }
 
     $('#hand').empty();
     $('#hand').append('<div class="label">Hand</div>');
     for (var i = 0; i < result.hand._cards.length; i++) {
       var c = result.hand._cards[i];
-      $('#hand').append('<div class="smallcard draggable" id="' + c.id + '"><img class="smallimg" src="/static/pics/cards/' + c.category + 's/' + c.id + '.png" /></div>')
+      $('#hand').append(createCard(c));
     }
     init();
   });
   
+}
+
+
+function createCard(card) {
+  if (card.category === 'rule') {
+    return '<div class="smallcard draggable" id="' + card.id + '"><div class="textcard">' + card.name + '</div></div>'
+  } else {
+    return '<div class="smallcard draggable" id="' + card.id + '"><img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" /></div>'
+  }
 }
