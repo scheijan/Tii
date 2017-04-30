@@ -1,4 +1,5 @@
 from copy import deepcopy
+import logging
 
 import jsonpickle
 
@@ -49,13 +50,13 @@ class Game(object):
     def setGoal(self, goal):
         """set the game's goal to the passed goal card"""
         # check win conditions here?
-        print('new goal: %s' % goal)
+        logging.info('new goal: %s' % goal)
         self.goal = goal
 
     def addRule(self, rule):
         """add the passed rule card to the list of current rules"""
         # remove obsolete rules and discard them
-        print('new rule: %s' % rule)
+        logging.info('new rule: %s' % rule)
         self.rules.add(rule)
 
     def initStack(self):
@@ -87,7 +88,8 @@ class Game(object):
 
         result += 'round: %s\n' % self.round
         result += 'current goal: %s\n' % self.goal
-        result += 'conditions: %s\n' % self.goal.conditions
+        if self.goal:
+            result += 'conditions: %s\n' % self.goal.conditions
         result += 'number of cards on the main stack: %s\n' % len(self.stack)
         result += 'number of cards on the discard stack: %s\n' % len(self.discard)
         result += 'number of rules: %s\n' % len(self.rules)
@@ -124,8 +126,8 @@ if __name__ == '__main__':
     p1 = game.players[0]
     p2 = game.players[1]
 
-    print(game.gameState())
+    logging.info(game.gameState())
     for i in range(0, 10):
         p1.turn()
         p2.turn()
-    print(game.gameState())
+    logging.info(game.gameState())

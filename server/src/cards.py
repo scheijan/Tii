@@ -1,3 +1,6 @@
+import logging
+
+
 class Card(object):
     """abstract base class for a single card"""
 
@@ -10,4 +13,4 @@ class Card(object):
         return str(self.name)
 
     def play(self, game, playerNumber):
-        print('Player %s plays card: %s' % (playerNumber, self))
+        logging.info('Player %s plays card: %s' % (playerNumber, self))

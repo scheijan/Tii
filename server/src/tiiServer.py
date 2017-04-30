@@ -5,13 +5,19 @@ import cherrypy
 
 from jinja2 import Environment, FileSystemLoader
 
+import coloredlogs
+
 import tii
+
+cherrypy.log.error_log.propagate = False
+cherrypy.log.access_log.propagate = False
 
 
 class TiiServer(object):
     def __init__(self):
         self.jinjaEnv = Environment(loader=FileSystemLoader('../static/html'))
         self.game = tii.Game(2)
+        coloredlogs.install(level='DEBUG', fmt='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y:%I:%M:%S')
 
     @cherrypy.expose
     def index(self):
