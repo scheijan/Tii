@@ -184,5 +184,18 @@ class Draw5(Rule):
         self.id = 'Draw5'
 
 
+class Mathematical(Rule):
+    """rule, sets 'draw cards per round' to 5 when played"""
+
+    def __init__(self):
+        super(Mathematical, self).__init__('Mathematical')
+        self.type = 'mathematical'
+
+    def play(self, game, playerNumber):
+        super(Mathematical, self).play(game, playerNumber)
+        game.cardsToDraw = 5
+        self.id = 'Mathematical'
+
+
 def allRules():
-    return [HandLimit1(), HandLimit2(), HandLimit3(), HandLimit4(), KeeperLimit4(), Play2(), Play3(), Play4(), PlayAll(), Draw2(), Draw3(), Draw4(), Draw5()]
+    return [HandLimit1(), HandLimit2(), HandLimit3(), HandLimit4(), KeeperLimit4(), Play2(), Play3(), Play4(), PlayAll(), Draw2(), Draw3(), Draw4(), Draw5(), Mathematical()]
