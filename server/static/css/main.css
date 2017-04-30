@@ -21,7 +21,7 @@ body {
   margin: 3px;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  transition: all 1.0s linear;
+  transition: transform 1.0s linear;
 }
 
 .textcard {
@@ -33,7 +33,7 @@ body {
   font-family: Impact, Impact5, Charcoal6, sans-serif;
   backface-visibility: hidden;
   transform-style: preserve-3d;
-  transition: all 1.0s linear;  
+  transition: transform 1.0s linear;  
 }
 
 .label {
