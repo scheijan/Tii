@@ -122,7 +122,16 @@ body {
 
 img.card.textcardback {
   margin-top: -74%;
-  padding: 0px;
+  padding: opx;
+}
+
+.goalcardback {
+  text-align: center;
+  padding: 2px;
+  background-color: white;
+  width:115px;
+
+  margin-left: -4px;
 }
 
 .front {
