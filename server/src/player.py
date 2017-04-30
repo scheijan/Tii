@@ -41,7 +41,7 @@ class Player(object):
         # print('Player %s draws card(s): %s' % (self.number, drawn))
         self.hand.add(drawn)
         self.cardsDrawn += len(drawn)
-        logging.info("%s draws %s cards" % (self.name, self.cardsDrawn))
+        logging.info("%s draws %s card(s)" % (self.name, self.cardsDrawn))
 
     def hasCreeper(self):
         """check player's field for creepers"""
@@ -61,7 +61,7 @@ class Player(object):
 
     def turn(self):
         """simulate a player's turn: draw cards and play the first card on hand"""
-        logging.info("%s begins" % self.name)
+        logging.info("Player %s begins" % self.number)
         self.cardsDrawn = 0
         self.cardsPlayed = 0
         while not self.obeysDrawLimit():
@@ -84,18 +84,18 @@ class Player(object):
 
     def obeysHandLimit(self):
         """ensure player obeys hand limit"""
-        logging.info("hand limit: %s (hand: %s)" % (self.game.handLimit, len(self.hand)))
+        logging.debug("hand limit: %s (hand: %s)" % (self.game.handLimit, len(self.hand)))
         return self.game.handLimit >= len(self.hand) or self.game.handLimit == -1
 
     def obeysKeeperLimit(self):
         """ensure player obeys keeper limit"""
-        logging.info("keeper limit: %s (keepers out: %s)" % (self.game.keeperLimit, len(self.field)))
+        logging.debug("keeper limit: %s (keepers out: %s)" % (self.game.keeperLimit, len(self.field)))
         return self.game.keeperLimit >= len(self.field) or self.game.keeperLimit == -1
 
     def obeysDrawLimit(self):
         """ensure player draws correct number of cards"""
-        logging.info("draw limit: %s (drawn: %s)" % (self.game.cardsToDraw, self.cardsDrawn))
-        return self.game.cardsToDraw == self.cardsDrawn or len(self.game.stack) == 0
+        logging.debug("draw limit: %s (drawn: %s)" % (self.game.cardsToDraw, self.cardsDrawn))
+        return self.game.cardsToDraw <= self.cardsDrawn or len(self.game.stack) == 0
 
     def obeysPlayLimit(self):
         """ensure player plays correct number of cards"""
@@ -107,10 +107,10 @@ class Player(object):
         elif self.game.rules.hasCard('PlayAll'):
             result = False
         # otherwise we check whether the player has player enough cards this round
-        elif self.game.cardsToPlay == self.cardsPlayed:
+        elif self.game.cardsToPlay <= self.cardsPlayed:
             result = True
 
-        logging.info("play limit: %s (played: %s, hand: %s)" % (self.game.cardsToPlay, self.cardsPlayed, len(self.hand)))
+        logging.debug("play limit: %s (played: %s, hand: %s)" % (self.game.cardsToPlay, self.cardsPlayed, len(self.hand)))
         return result
 
     def canEndTurn(self):
