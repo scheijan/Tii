@@ -35,9 +35,9 @@ class TiiServer(object):
         r = int(r)
         self.game = tii.Game(p)
 
-        for p in [x for x in self.game.players if not self.game.won]:
-            for i in [i for i in range(0, r) if not self.game.won]:
-                won = p.turn()
+        for i in [i for i in range(0, r) if not self.game.won]:
+            for player in [x for x in self.game.players if not self.game.won]:
+                won = player.turn()
                 if won:
                     break
 
