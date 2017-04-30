@@ -24,10 +24,14 @@ body {
 .textcard {
   text-align: center;
   margin-top: 50%;
-  color: SlateGrey;
+  color: SteelBlue;
   font-weight: bold;
   font-size: larger;
   font-family: Impact, Impact5, Charcoal6, sans-serif;
+}
+
+.label {
+  text-align: center;
 }
 
 .smallimg {  

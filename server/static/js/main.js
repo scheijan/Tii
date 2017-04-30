@@ -37,18 +37,21 @@ function getData(n) {
     }
 
     $('#rules').empty();
+    $('#rules').append('<div class="label">Rules</div>');
     for (var i = 0; i < result.rules._cards.length; i++) {
       var c = result.rules._cards[i];
       $('#rules').append('<div class="smallcard draggable" id="' + c.id + '"><div class="textcard">' + c.name + '</div></div>')
     }
       
     $('#field').empty();
+    $('#field').append('<div class="label">Field</div>');
     for (var i = 0; i < result.field._cards.length; i++) {
       var c = result.field._cards[i];
       $('#field').append('<div class="smallcard draggable" id="' + c.id + '"><img class="smallimg" src="/static/pics/cards/' + c.category + 's/' + c.id + '.png" /></div>')
     }
 
     $('#hand').empty();
+    $('#hand').append('<div class="label">Hand</div>');
     for (var i = 0; i < result.hand._cards.length; i++) {
       var c = result.hand._cards[i];
       $('#hand').append('<div class="smallcard draggable" id="' + c.id + '"><img class="smallimg" src="/static/pics/cards/' + c.category + 's/' + c.id + '.png" /></div>')

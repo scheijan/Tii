@@ -17,7 +17,7 @@ class TiiServer(object):
     def __init__(self):
         self.jinjaEnv = Environment(loader=FileSystemLoader('../static/html'))
         self.game = tii.Game(2)
-        coloredlogs.install(level='DEBUG', fmt='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y:%I:%M:%S')
+        coloredlogs.install(level='INFO', fmt='[%(asctime)s] %(levelname)s %(message)s', datefmt='%d/%b/%Y:%I:%M:%S')
 
     @cherrypy.expose
     def index(self):
@@ -47,12 +47,6 @@ class TiiServer(object):
 
         template = self.jinjaEnv.get_template('index.html')
         return template.render(content=result)
-
-    @cherrypy.expose
-    def player(self, n=0):
-        extraScripts = '<script type="text/javascript">$(getData(%s));</script>' % n
-        template = self.jinjaEnv.get_template('board.html')
-        return template.render(n=n, extraScripts=extraScripts)
 
     @cherrypy.expose
     def state(self, n=1):
