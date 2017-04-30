@@ -163,6 +163,13 @@ class Game(object):
         c.name = p.name
         c.players = []
         c.winner = None
+
+        c.gameData = {}
+        c.gameData['cardsToDraw'] = self.cardsToDraw
+        c.gameData['cardsToPlay'] = self.cardsToPlay
+        c.gameData['keeperLimit'] = self.keeperLimit
+        c.gameData['handLimit'] = self.handLimit
+
         for p in [player for player in self.players if player.number != playerNr]:
             c.players.append({'name': p.name, 'field': p.field, 'number': p.number})
 
