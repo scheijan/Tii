@@ -114,6 +114,7 @@ class Game(object):
         c.field = p.field
         c.name = p.name
         c.players = []
+        c.winner = None
         for p in [player for player in self.players if player.number != playerNr]:
             c.players.append({'name': p.name, 'field': p.field, 'number': p.number})
 
