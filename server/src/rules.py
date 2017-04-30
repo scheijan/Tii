@@ -193,7 +193,6 @@ class Mathematical(Rule):
 
     def play(self, game, playerNumber):
         super(Mathematical, self).play(game, playerNumber)
-        game.cardsToDraw = 5
         self.id = 'Mathematical'
 
 
