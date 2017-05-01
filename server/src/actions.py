@@ -1,3 +1,5 @@
+import logging
+
 from cards import Card
 
 
@@ -20,14 +22,43 @@ class Jackpot(Action):
     def __init__(self):
         super(Jackpot, self).__init__('Jackpot')
         self.id = 'jackpot'
-        self.description = 'Draw 3 cards!'
+        self.description = 'Draw 3 cards'
 
     def play(self, game, playerNumber):
-        """calls the generic 'play' method of Action (Card) and draws 3 cards for the player"""
+        """calls the generic 'play' method of Action and draws 3 cards for the player"""
         super(Jackpot, self).play(game, playerNumber)
         # draw 3 cards which should not be added to the "drawnCards" counter for this round
         game.players[playerNumber].draw(3, False)
 
 
+class RulesReset(Action):
+    """Jackpot: draw three cards"""
+
+    def __init__(self):
+        super(RulesReset, self).__init__('Rules Reset')
+        self.id = 'rulesreset'
+        self.description = 'Reset to the Basic Rules'
+
+    def play(self, game, playerNumber):
+        """calls the generic 'play' method of Action and resets all rules"""
+        super(RulesReset, self).play(game, playerNumber)
+        # move all cards from the rules stack to the discard stack
+        numberOfRules = len(game.rules)
+        logging.warn(numberOfRules)
+        logging.warn(game.rules._cards)
+        if numberOfRules > 0:
+            logging.error('here')
+            for i in range(numberOfRules - 1, -1, -1):
+                logging.warn(i)
+                rule = game.rules.remove(i)
+                game.discard.add(rule)
+
+            # reset to the basic rule limits
+            game.cardsToDraw = 1
+            game.cardsToPlay = 1
+            game.keeperLimit = -1
+            game.handLimit = -1
+
+
 def allActions():
-    return [Jackpot()]
+    return [Jackpot(), RulesReset()]
