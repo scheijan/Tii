@@ -124,7 +124,7 @@ class Player(object):
         if not self.game.goal or self.hasCreeper():
             won = False
         else:
-            if self.game.goal.check:
+            if hasattr(self.game.goal, 'check'):
                 won = self.game.goal.check(self)
             else:
                 for condition in self.game.goal.conditions:
