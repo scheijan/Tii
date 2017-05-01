@@ -7,7 +7,7 @@ class Keeper(Card):
         super(Keeper, self).__init__(name)
         self.category = 'keeper'
         self.id = id
-        # keepers should be able to have 0-2 types for special wind conditons (candy / princess)
+        # keepers should be able to have 0-N types for special wind conditons (candy / princess)
         self.types = types
 
     def play(self, game, playerNumber):
