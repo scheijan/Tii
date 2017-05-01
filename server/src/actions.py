@@ -9,6 +9,10 @@ class Action(Card):
         self.category = 'action'
         self.name = name
 
+    def play(self, game, playerNumber):
+        super(Action, self).play(game, playerNumber)
+        game.discard.add(self)
+
 
 class Jackpot(Action):
     """Jackpot: draw three cards"""
@@ -23,3 +27,7 @@ class Jackpot(Action):
         super(Jackpot, self).play(game, playerNumber)
         # draw 3 cards which should not be added to the "drawnCards" counter for this round
         game.players[playerNumber].draw(3, False)
+
+
+def allActions():
+    return [Jackpot()]
