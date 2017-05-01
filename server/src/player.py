@@ -29,7 +29,7 @@ class Player(object):
             c.play(self.game, self.number)
             self.cardsPlayed += 1
 
-    def draw(self, count=1):
+    def draw(self, count=1, countAsDraw=True):
         """draw a card from the stack, repeat until it's not a creeper"""
         drawn = self.game.drawFromStack(count)
         for c in drawn:
@@ -40,7 +40,8 @@ class Player(object):
         drawn = [c for c in drawn if c.category != 'creeper']
         # print('Player %s draws card(s): %s' % (self.number, drawn))
         self.hand.add(drawn)
-        self.cardsDrawn += len(drawn)
+        if countAsDraw:
+            self.cardsDrawn += len(drawn)
         logging.info("%s draws %s card(s)" % (self.name, self.cardsDrawn))
 
     def hasCreeper(self):
