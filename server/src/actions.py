@@ -1,6 +1,7 @@
 import logging
 
 from cards import Card
+from stack import Stack
 
 
 class Action(Card):
@@ -108,5 +109,38 @@ class JamesBaxter(Action):
         game.keeperLimit = -1
 
 
+class MixItAllUp(Action):
+    """Jame Baxter: All players draw a card, all keeper/hand limits are discarded"""
+
+    def __init__(self):
+        super(MixItAllUp, self).__init__('Mix It All Up')
+        self.id = 'mixitallup'
+        self.description = 'Gather up all the Keepers on the table, shuffle them together and deal them back out'
+
+    def play(self, game, playerNumber):
+        """calls the generic 'play' method of Action, draws a card for all players and removes all keeper/hand limits"""
+        super(MixItAllUp, self).play(game, playerNumber)
+
+        # loop over all players and collect the keepers in their fields in a new stack
+        allKeepers = Stack()
+        for player in game.players:
+            if len(player.field) > 0:
+                for i in range(len(player.field) - 1, -1, -1):
+                    card = player.field.remove(i)
+                    allKeepers.add(card)
+
+        # shuffle
+        allKeepers.shuffle()
+
+        # while there are keepers distribute them to players, starting with the current player
+        i = playerNumber
+        while len(allKeepers) > 0:
+            game.players[i].field.add(allKeepers.draw())
+            if i == len(game.players) - 1:
+                i = 0
+            else:
+                i += 1
+
+
 def allActions():
-    return [Jackpot(), RulesReset(), DiscardAndDraw(), JamesBaxter()]
+    return [Jackpot(), RulesReset(), DiscardAndDraw(), JamesBaxter(), MixItAllUp()]
