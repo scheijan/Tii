@@ -6,6 +6,7 @@ import jsonpickle
 from keeper import allKeepers
 from goals import allGoals
 from rules import allRules
+from actions import allActions
 from stack import Stack, RulesStack
 from player import Player
 
@@ -113,6 +114,7 @@ class Game(object):
         allCards += allGoals()
         allCards += allRules()
         allCards += allKeepers()
+        allCards += allActions()
         for card in allCards:
             self.stack.add(card)
 
