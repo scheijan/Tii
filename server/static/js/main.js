@@ -14,9 +14,12 @@ function init() {
       accept: '.draggable',
     });
 }
+
+
 function flip() {
   $('.smallcard').toggleClass('flipped');
 }
+
 
 function handleDropEvent( event, ui ) {
   var draggable = ui.draggable;
@@ -24,6 +27,7 @@ function handleDropEvent( event, ui ) {
   draggable.draggable( 'option', 'revert', false );
   console.log( 'the card with ID "' + draggable.attr('id') + '" was dropped onto me!' );
 }
+
 
 function getData(n) {
   $.getJSON("/state?n=" + n, function(result){
@@ -62,7 +66,6 @@ function getData(n) {
     }
     init();
   });
-  
 }
 
 
