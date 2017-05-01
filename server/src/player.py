@@ -47,7 +47,7 @@ class Player(object):
         """check player's field for creepers"""
         result = False
         for c in self.field:
-            if c.category == 'creeper':
+            if 'creeper' in c.types:
                 result = True
         return result
 
