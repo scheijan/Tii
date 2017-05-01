@@ -19,9 +19,6 @@ class Goal(Card):
         super(Goal, self).play(game, playerNumber)
         game.setGoal(self)
 
-    def check(self, game, playerNumber):
-        pass
-
 
 class Alph(Goal):
     """docstring for Alph"""
@@ -225,7 +222,7 @@ class IlmenskieJones(Goal):
     """docstring for Ilmenskie Jones"""
     def __init__(self):
         super(IlmenskieJones, self).__init__('Ilmenskie Jones')
-        self.description = 'some description here'
+        self.description = '''Professor of porkthropology, obtainer of rare artifacts and the most famous porcine adventurer in all of Ur, Ilmenskie Jones is perhaps the most dreamy pig ever to wear a hat. He only suffers two flaws: fear of noodles (apparently he doesn't like the way they slither), and a tendency to get trapped in caves.'''
         self.conditions = ['piggy', 'sparkly']
         self.id = 'ilmenskie-jones'
 
@@ -234,16 +231,20 @@ class GameshowWheel(Goal):
     """docstring for Gameshow Wheel"""
     def __init__(self):
         super(GameshowWheel, self).__init__('Gameshow Wheel')
-        self.description = 'some description here'
-        self.conditions = []
+        self.description = '''One glittery, razzling, dazzling game show wheel. Ain't nothing you can do but USE it.'''
         self.id = 'gameshow-wheel'
+
+    def check(self, player):
+        result = False
+        return result
+
 
 
 class MusicblockGng(Goal):
     """docstring for Musicblock GNG"""
     def __init__(self):
         super(MusicblockGng, self).__init__('Musicblock GNG')
-        self.description = 'some description here'
+        self.description = 'Once upon a time, this was the song that sent the world into slumber.'
         self.conditions = ['crab', 'crabato-juice']
         self.id = 'musicblock-gng'
 

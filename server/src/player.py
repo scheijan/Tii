@@ -123,9 +123,12 @@ class Player(object):
         if not self.game.goal or self.hasCreeper():
             won = False
         else:
-            for condition in self.game.goal.conditions:
-                if not self.hasKeeper(condition):
-                    won = False
+            if self.game.goal.check:
+                won = self.game.goal.check(self)
+            else:
+                for condition in self.game.goal.conditions:
+                    if not self.hasKeeper(condition):
+                        won = False
 
         if won:
             self.game.won = True
