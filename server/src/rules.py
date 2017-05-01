@@ -67,6 +67,19 @@ class HandLimit4(Rule):
         self.id = 'HandLimit4'
 
 
+class KeeperLimit3(Rule):
+    """rule, sets the keeper limit to 3 when played"""
+
+    def __init__(self):
+        super(KeeperLimit3, self).__init__('Keeper Limit 3')
+        self.type = 'keeper'
+
+    def play(self, game, playerNumber):
+        super(KeeperLimit3, self).play(game, playerNumber)
+        game.keeperLimit = 3
+        self.id = 'KeeperLimit3'
+
+
 class KeeperLimit4(Rule):
     """rule, sets the keeper limit to 4 when played"""
 
@@ -130,6 +143,19 @@ class PlayAll(Rule):
         super(PlayAll, self).play(game, playerNumber)
         game.cardsToPlay = -1
         self.id = 'PlayAll'
+
+
+class PlayAllButOne(Rule):
+    """rule, sets 'play cards per round' to -1 ("all") when played"""
+
+    def __init__(self):
+        super(PlayAll, self).__init__('Play All But One')
+        self.type = 'play'
+
+    def play(self, game, playerNumber):
+        super(PlayAll, self).play(game, playerNumber)
+        game.cardsToPlay = -1
+        self.id = 'PlayAllButOne'
 
 
 class Draw2(Rule):
@@ -197,4 +223,4 @@ class Mathematical(Rule):
 
 
 def allRules():
-    return [HandLimit1(), HandLimit2(), HandLimit3(), HandLimit4(), KeeperLimit4(), Play2(), Play3(), Play4(), PlayAll(), Draw2(), Draw3(), Draw4(), Draw5(), Mathematical()]
+    return [HandLimit1(), HandLimit2(), HandLimit3(), HandLimit4(), KeeperLimit3(), KeeperLimit4(), Play2(), Play3(), Play4(), PlayAll(), Draw2(), Draw3(), Draw4(), Draw5(), Mathematical()]

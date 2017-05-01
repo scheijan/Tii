@@ -107,6 +107,9 @@ class Player(object):
         # if the rule is "Play All" and the player has not 0 cards, we return false
         elif self.game.rules.hasCard('PlayAll'):
             result = False
+        # if the rule is "Play All But One" and the player has exactly 1 card, we return true
+        elif self.game.rules.hasCard('PlayAllButOne') and len(self.hand) == 1:
+            result = True
         # otherwise we check whether the player has player enough cards this round
         elif self.game.cardsToPlay <= self.cardsPlayed:
             result = True
