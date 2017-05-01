@@ -61,6 +61,11 @@ class Stack(object):
                 return True
         return False
 
+    def removeCardsByCategory(self, category):
+        result = [card for card in self._cards if card.category == category]
+        self._cards = [card for card in self._cards if card.category != category]
+        return result
+
 
 class RulesStack(Stack):
     """special stack for rules, only allows one card per type, removes cards automatically as necessary"""
@@ -73,3 +78,8 @@ class RulesStack(Stack):
             self._cards = [card for card in self._cards if not card.type == newCard.type]
 
         super(RulesStack, self).add(cards)
+
+    def removeRulesByType(self, ruleType):
+        result = [card for card in self._cards if card.type == ruleType]
+        self._cards = [card for card in self._cards if card.type != ruleType]
+        return result
