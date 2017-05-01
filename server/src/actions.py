@@ -80,5 +80,33 @@ class DiscardAndDraw(Action):
                 player.draw()
 
 
+class JamesBaxter(Action):
+    """Jame Baxter: All players draw a card, all keeper/hand limits are discarded"""
+
+    def __init__(self):
+        super(JamesBaxter, self).__init__('James Baxter')
+        self.id = 'jamesbaxter'
+        self.description = 'All players draw a card. All Hand and Keeper Limits are discarded.'
+
+    def play(self, game, playerNumber):
+        """calls the generic 'play' method of Action, draws a card for all players and removes all keeper/hand limits"""
+        super(JamesBaxter, self).play(game, playerNumber)
+
+        # loop over all players and draw one card each
+        for player in game.players:
+            player.draw()
+
+        # remove all hand/keeper limit cards and add them to the discard stack
+        removedCards = game.rules.removeRulesByType('hand')
+        removedCards += game.rules.removeRulesByType('keeper')
+
+        for card in removedCards:
+            game.discard.add(card)
+
+        # reset limits
+        game.handLimit = -1
+        game.keeperLimit = -1
+
+
 def allActions():
-    return [Jackpot(), RulesReset(), DiscardAndDraw()]
+    return [Jackpot(), RulesReset(), DiscardAndDraw(), JamesBaxter()]
