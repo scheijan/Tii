@@ -32,7 +32,7 @@ class Jackpot(Action):
 
 
 class RulesReset(Action):
-    """Jackpot: draw three cards"""
+    """Jackpot: reset all rules"""
 
     def __init__(self):
         super(RulesReset, self).__init__('Rules Reset')
@@ -44,12 +44,8 @@ class RulesReset(Action):
         super(RulesReset, self).play(game, playerNumber)
         # move all cards from the rules stack to the discard stack
         numberOfRules = len(game.rules)
-        logging.warn(numberOfRules)
-        logging.warn(game.rules._cards)
         if numberOfRules > 0:
-            logging.error('here')
             for i in range(numberOfRules - 1, -1, -1):
-                logging.warn(i)
                 rule = game.rules.remove(i)
                 game.discard.add(rule)
 
@@ -60,5 +56,29 @@ class RulesReset(Action):
             game.handLimit = -1
 
 
+class DiscardAndDraw(Action):
+    """DiscardAndDraw: discard all hand cards and draw new ones"""
+
+    def __init__(self):
+        super(DiscardAndDraw, self).__init__('Discard and Draw')
+        self.id = 'discardanddraw'
+        self.description = 'Discard your entire hand, then draw as many cards as you discarded'
+
+    def play(self, game, playerNumber):
+        """calls the generic 'play' method of Action, discards all hand cards and draws an equal amount of new cards"""
+        super(DiscardAndDraw, self).play(game, playerNumber)
+
+        player = game.players[playerNumber]
+        numberOfCards = len(player.hand)
+        if numberOfCards > 0:
+            # discard all card on hand
+            for i in range(numberOfCards - 1, -1, -1):
+                card = player.hand.remove(i)
+                game.discard.add(card)
+            # draw new cards
+            for i in range(0, numberOfCards):
+                player.draw()
+
+
 def allActions():
-    return [Jackpot(), RulesReset()]
+    return [Jackpot(), RulesReset(), DiscardAndDraw()]
