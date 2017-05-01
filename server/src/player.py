@@ -42,7 +42,7 @@ class Player(object):
         self.hand.add(drawn)
         if countAsDraw:
             self.cardsDrawn += len(drawn)
-        logging.info("%s draws %s card(s)" % (self.name, self.cardsDrawn))
+        logging.info("%s draws %s card(s)" % (self.name, len(drawn)))
 
     def hasCreeper(self):
         """check player's field for creepers"""
