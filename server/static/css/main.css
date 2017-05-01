@@ -134,6 +134,21 @@ img.card.textcardback {
   margin-left: -4px;
 }
 
+.actioncard {
+  text-align: center;
+  color: Crimson;
+  font-family: Impact, Impact5, Charcoal6, sans-serif;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 1.0s linear;  
+}
+
+.actioncardback {
+  margin-top: -70%;
+  padding: opx;
+}
+
+
 .front {
   
 }

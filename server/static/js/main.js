@@ -79,6 +79,16 @@ function createCard(card) {
                 <img class="card textcardback" src="/static/pics/card.png"/>\
               </div>\
             </div>'
+  } else if (card.category === 'action') {
+    return '<div class="smallcard draggable" id="' + card.id + '">\
+              <div class="front">\
+                <div class="actioncard card"><br/><b>' + card.name + '</b><br/><br/>' + card.description + '</div>\
+              </div>\
+              <div class="back actioncardback">\
+                <img class="card actioncardback" src="/static/pics/card.png"/>\
+              </div>\
+            </div>'
+
   } else if (card.category === 'goal') {
     return '<div class="smallcard draggable" id="' + card.id + '">\
               <div class="front">\
