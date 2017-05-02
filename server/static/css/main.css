@@ -4,6 +4,7 @@ body {
 
 .card {
   border: 1px solid silver;
+  border-radius: 10px;
   box-shadow: 4px 4px 2px #888888;
   width: 120px;
   height: 164px;
@@ -11,6 +12,7 @@ body {
 
 .smallcard {
   border: 1px solid silver;
+  border-radius: 10px;
   box-shadow: 4px 4px 2px #888888;
   width: 120px;
   height: 164px;
