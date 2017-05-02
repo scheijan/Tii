@@ -71,39 +71,21 @@ function getData(n) {
 
 function createCard(card) {
   if (card.category === 'rule') {
-    return '<div class="smallcard draggable" id="' + card.id + '">\
-              <div class="front">\
+    return '<div class="card draggable" id="' + card.id + '">\
                 <div class="textcard">' + card.name + '</div>\
-              </div>\
-              <div class="back textcardback">\
-                <img class="card textcardback" src="/static/pics/card.png"/>\
-              </div>\
             </div>'
   } else if (card.category === 'action') {
-    return '<div class="smallcard draggable" id="' + card.id + '">\
-              <div class="front">\
+    return '<div class="card draggable" id="' + card.id + '">\
                 <div class="actioncard card"><br/><b>' + card.name + '</b><br/><br/>' + card.description + '</div>\
-              </div>\
-              <div class="back actioncardback">\
-                <img class="card actioncardback" src="/static/pics/card.png"/>\
-              </div>\
             </div>'
 
   } else if (card.category === 'goal') {
-    return '<div class="smallcard draggable" id="' + card.id + '">\
-              <div class="front">\
+    return '<div class="card draggable" id="' + card.id + '">\
                 <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
-              </div>\
-              <div class="back goalcardback card"><br/><b>' + card.name + '</b><br/><br/>' + card.description + '</div>\
             </div>'
   } else {
-    return '<div class="smallcard draggable" id="' + card.id + '">\
-               <div class="front">\
+    return '<div class="card draggable" id="' + card.id + '">\
                 <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
-              </div>\
-              <div class="back">\
-                <img class="card" src="/static/pics/card.png"/>\
-              </div>\
             </div>'
   }
 }

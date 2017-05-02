@@ -8,22 +8,11 @@ body {
   box-shadow: 4px 4px 2px #888888;
   width: 120px;
   height: 164px;
-}
-
-.smallcard {
-  border: 1px solid silver;
-  border-radius: 10px;
-  box-shadow: 4px 4px 2px #888888;
-  width: 120px;
-  height: 164px;
   background-color: white;
   vertical-align: middle;
   position: relative;
   display: inline-block;
   margin: 3px;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transition: transform 1.0s linear;
 }
 
 .textcard {
@@ -33,20 +22,16 @@ body {
   font-weight: bold;
   font-size: larger;
   font-family: Impact, Impact5, Charcoal6, sans-serif;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transition: transform 1.0s linear;  
 }
 
-.label {
+.actioncard {
   text-align: center;
+  color: Crimson;
+  font-family: Impact, Impact5, Charcoal6, sans-serif;
 }
 
 .smallimg {  
-  max-height: 100%;  
-  max-width: 100%; 
   width: 100px;
-  height: auto;
   position: absolute;  
   top: 0;  
   bottom: 0;  
@@ -55,7 +40,7 @@ body {
   margin: auto;
 }
 
-.card:hover, .smallcard:hover {
+.card:hover {
   cursor: move;
 }
 
@@ -77,6 +62,7 @@ body {
   padding: 3px;
   margin-bottom: 3px;
   background-color: silver;
+  text-align: center;
 }
 
 #board {
@@ -85,7 +71,7 @@ body {
   padding-top: 5px;
 }
 
-#rules {
+#rules, #field, #hand {
   margin: 10px;
   border: 1px solid DarkGrey;
   min-height: 190px;
@@ -98,68 +84,6 @@ body {
   text-align: center;
 }
 
-#field {
-  margin: 10px;
-  border: 1px solid DarkGrey;
-  min-height: 190px;
-}
-
-#hand {
-  margin: 10px;
-  border: 1px solid DarkGrey;
-  min-height: 190px;
-}
-
-#stack {
+#stack, #goal, #discard {
   float: left;
-}
-
-#goal {
-  float: left;
-}
-
-#discard {
-  float: left;
-}
-
-img.card.textcardback {
-  margin-top: -74%;
-  padding: opx;
-}
-
-.goalcardback {
-  text-align: center;
-  padding: 2px;
-  background-color: white;
-  width:115px;
-
-  margin-left: -4px;
-}
-
-.actioncard {
-  text-align: center;
-  color: Crimson;
-  font-family: Impact, Impact5, Charcoal6, sans-serif;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-  transition: transform 1.0s linear;  
-}
-
-.actioncardback {
-  margin-top: -70%;
-  padding: opx;
-}
-
-
-.front {
-  
-}
-.back {
-  font-size: 8pt;
-  padding: 2px;
-  transform: rotateY( 180deg );
-}
-
-.flipped {
-  transform: rotateY( 180deg );
 }
