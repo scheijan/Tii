@@ -12,22 +12,18 @@ body {
   vertical-align: middle;
   position: relative;
   display: inline-block;
+  max-height: 164px;
+  text-align: center;
   margin: 3px;
 }
 
-.textcard {
-  text-align: center;
+.rulecard, .actioncard {
+  border:none;
   margin-top: 50%;
-  color: SteelBlue;
   font-weight: bold;
   font-size: larger;
   font-family: Impact, Impact5, Charcoal6, sans-serif;
-}
-
-.actioncard {
-  text-align: center;
-  color: Crimson;
-  font-family: Impact, Impact5, Charcoal6, sans-serif;
+  color: #FFFFFF;
 }
 
 .smallimg {  
@@ -38,6 +34,18 @@ body {
   left: 0;  
   right: 0;  
   margin: auto;
+}
+
+.goal {
+  background-color: rgba(65, 131, 196, 0.2);
+}
+
+.action {
+  background-color: #455A64;
+}
+
+.rule {
+  background-color: #607D8B;  
 }
 
 .card:hover {

@@ -38,8 +38,7 @@ function getData(n) {
     snippet = snippet + '<div>Draw: ' + result.gameData.cardsToDraw + ' / Play:' + result.gameData.cardsToPlay + '</div>';
     
     $('#gameinfo').html(snippet);
-    $('#gameinfo').append('<button onclick="flip()">flip</button>');
-
+    
     if (result.goal) {
       $('#goalStack').html(createCard(result.goal));
     }
@@ -71,16 +70,16 @@ function getData(n) {
 
 function createCard(card) {
   if (card.category === 'rule') {
-    return '<div class="card draggable" id="' + card.id + '">\
-                <div class="textcard">' + card.name + '</div>\
+    return '<div class="card draggable rule" id="' + card.id + '">\
+                <div class="rulecard">' + card.name + '</div>\
             </div>'
   } else if (card.category === 'action') {
-    return '<div class="card draggable" id="' + card.id + '">\
-                <div class="actioncard card"><br/><b>' + card.name + '</b><br/><br/>' + card.description + '</div>\
+    return '<div class="card draggable action" id="' + card.id + '">\
+                <div class="actioncard">' + card.name + '</div>\
             </div>'
 
   } else if (card.category === 'goal') {
-    return '<div class="card draggable" id="' + card.id + '">\
+    return '<div class="card draggable goal" id="' + card.id + '">\
                 <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
             </div>'
   } else {
