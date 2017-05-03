@@ -1,5 +1,3 @@
-$( init );
- 
 function init() {
   $('.draggable').draggable({
       // containment: '#content',
@@ -12,12 +10,7 @@ function init() {
       hoverClass: 'hovered',
       drop: handleDropEvent,
       accept: '.draggable',
-    });
-}
-
-
-function flip() {
-  $('.smallcard').toggleClass('flipped');
+  });
 }
 
 
