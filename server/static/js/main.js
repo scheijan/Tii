@@ -72,19 +72,23 @@ function createCard(card) {
   if (card.category === 'rule') {
     return '<div class="card draggable rule" id="' + card.id + '">\
                 <div class="rulecard">' + card.name + '</div>\
+                <div class="corner">Rule</div>\
             </div>'
   } else if (card.category === 'action') {
     return '<div class="card draggable action" id="' + card.id + '">\
                 <div class="actioncard">' + card.name + '</div>\
+                <div class="corner">Action</div>\
             </div>'
 
   } else if (card.category === 'goal') {
     return '<div class="card draggable goal" id="' + card.id + '">\
                 <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
+                <div class="corner">Goal</div>\
             </div>'
   } else {
     return '<div class="card draggable" id="' + card.id + '">\
                 <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
+                <div class="corner">Keeper</div>\
             </div>'
   }
 }

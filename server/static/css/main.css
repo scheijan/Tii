@@ -17,6 +17,7 @@ body {
   margin: 3px;
 }
 
+
 .rulecard, .actioncard {
   border:none;
   margin-top: 50%;
@@ -25,6 +26,17 @@ body {
   font-family: Impact, Impact5, Charcoal6, sans-serif;
   color: #FFFFFF;
 }
+
+.corner {
+  position:absolute;
+  padding-left: 10px;
+  font-size: 10pt;
+}
+
+.rule .corner, .action .corner {
+  margin-top: -68%;
+}
+
 
 .smallimg {  
   width: 100px;
