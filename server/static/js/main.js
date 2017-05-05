@@ -54,34 +54,36 @@ function getData(n) {
     $('#hand').append('<div class="label">Hand</div>');
     for (var i = 0; i < result.hand._cards.length; i++) {
       var c = result.hand._cards[i];
-      $('#hand').append(createCard(c));
+      $('#hand').append(createCard(c))
     }
     init();
-  });
+    $('.circle').circleType({radius: 60});    
+  })
+  
 }
 
 
 function createCard(card) {
   if (card.category === 'rule') {
     return '<div class="card draggable rule" id="' + card.id + '">\
-                <div class="rulecard">' + card.name + '</div>\
-                <div class="corner">Rule</div>\
+              <div class="corner">Rule</div>\
+              <div class="rulecard circle">' + card.name + '</div>\
             </div>'
   } else if (card.category === 'action') {
     return '<div class="card draggable action" id="' + card.id + '">\
-                <div class="actioncard">' + card.name + '</div>\
-                <div class="corner">Action</div>\
+              <div class="corner">Action</div>\
+              <div class="actioncard circle">' + card.name + '</div>\
             </div>'
 
   } else if (card.category === 'goal') {
     return '<div class="card draggable goal" id="' + card.id + '">\
-                <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
-                <div class="corner">Goal</div>\
+              <div class="corner">Goal</div>\
+              <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
             </div>'
   } else {
     return '<div class="card draggable" id="' + card.id + '">\
-                <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
-                <div class="corner">Keeper</div>\
+              <div class="corner">Keeper</div>\
+              <img class="smallimg" src="/static/pics/cards/' + card.category + 's/' + card.id + '.png" />\
             </div>'
   }
 }

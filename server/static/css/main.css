@@ -17,26 +17,18 @@ body {
   margin: 3px;
 }
 
+.card:hover {
+  cursor: move;
+}
 
 .rulecard, .actioncard {
   border:none;
-  margin-top: 50%;
+  margin-top: 40%;
   font-weight: bold;
   font-size: larger;
   font-family: Impact, Impact5, Charcoal6, sans-serif;
   color: #FFFFFF;
 }
-
-.corner {
-  position:absolute;
-  padding-left: 10px;
-  font-size: 10pt;
-}
-
-.rule .corner, .action .corner {
-  margin-top: -68%;
-}
-
 
 .smallimg {  
   width: 100px;
@@ -60,8 +52,11 @@ body {
   background-color: #607D8B;  
 }
 
-.card:hover {
-  cursor: move;
+.corner {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 10pt;
+  position: relative;
 }
 
 .stack {
