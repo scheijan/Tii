@@ -28,7 +28,7 @@ function getData(n) {
     snippet = snippet + '<div>Name: ' + result.name + '</div>';
     snippet = snippet + '<div>Round: ' + result.round + '</div>';
     
-    snippet = snippet + '<div>Draw: ' + result.gameData.cardsToDraw + ' / Play:' + result.gameData.cardsToPlay + '</div>';
+    snippet = snippet + '<div>Draw: ' + result.gameData.cardsToDraw + ' / Play: ' + result.gameData.cardsToPlay + '</div>';
     
     $('#gameinfo').html(snippet);
     
